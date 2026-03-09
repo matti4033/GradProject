@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "ProceduralAnim",
+			"Path": "..\\Source\\ProceduralAnim.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "ProceduralAnimEditor",
+			"Path": "..\\Source\\ProceduralAnimEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}

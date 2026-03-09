@@ -1,0 +1,14 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "f:\\skola\\graduationproject\\proceduralanim\\source\\proceduralanimeditor\\proceduralanimeditor.cpp",
+        "ProvidedModule": "",
+        "PCH": "f:\\skola\\graduationproject\\proceduralanim\\intermediate\\build\\win64\\x64\\proceduralanimeditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "Includes": [
+            "f:\\skola\\graduationproject\\proceduralanim\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\proceduralanimeditor\\definitions.proceduralanimeditor.h",
+            "f:\\skola\\graduationproject\\proceduralanim\\source\\proceduralanimeditor\\proceduralanimeditor.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

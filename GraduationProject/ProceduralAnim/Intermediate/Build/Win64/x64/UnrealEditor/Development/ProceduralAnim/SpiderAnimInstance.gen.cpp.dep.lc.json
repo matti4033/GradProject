@@ -1,0 +1,17 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "f:\\skola\\graduationproject\\proceduralanim\\intermediate\\build\\win64\\unrealeditor\\inc\\proceduralanim\\uht\\spideraniminstance.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "f:\\skola\\graduationproject\\proceduralanim\\intermediate\\build\\win64\\x64\\proceduralanimeditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "Includes": [
+            "f:\\skola\\graduationproject\\proceduralanim\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\proceduralanim\\definitions.proceduralanim.h",
+            "f:\\skola\\graduationproject\\proceduralanim\\source\\proceduralanim\\spideraniminstance.h",
+            "f:\\skola\\graduationproject\\proceduralanim\\source\\proceduralanim\\spiderleg.h",
+            "f:\\skola\\graduationproject\\proceduralanim\\intermediate\\build\\win64\\unrealeditor\\inc\\proceduralanim\\uht\\spiderleg.generated.h",
+            "f:\\skola\\graduationproject\\proceduralanim\\intermediate\\build\\win64\\unrealeditor\\inc\\proceduralanim\\uht\\spideraniminstance.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

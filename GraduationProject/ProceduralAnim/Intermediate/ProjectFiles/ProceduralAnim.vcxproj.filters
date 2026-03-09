@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\ProceduralAnim.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{F31BBDD1-B3E8-3BCC-9652-680E16935819}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\ProceduralAnim.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\ProceduralAnimEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\.vsconfig" />
+    <Filter Include="Config">
+      <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\ProceduralAnimEditor">
+      <UniqueIdentifier>{0C019755-CEE7-3DCF-B88C-D4A25CE3FDCE}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\ProceduralAnimEditor\AnimGraphNode_SpiderIK.cpp">
+      <Filter>Source\ProceduralAnimEditor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ProceduralAnimEditor\AnimGraphNode_SpiderIK.h">
+      <Filter>Source\ProceduralAnimEditor</Filter>
+    </ClCompile>
+    <None Include="..\..\Source\ProceduralAnimEditor\ProceduralAnimEditor.Build.cs">
+      <Filter>Source\ProceduralAnimEditor</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\ProceduralAnimEditor\ProceduralAnimEditor.cpp">
+      <Filter>Source\ProceduralAnimEditor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ProceduralAnimEditor\ProceduralAnimEditor.h">
+      <Filter>Source\ProceduralAnimEditor</Filter>
+    </ClCompile>
+    <Filter Include="Source\ProceduralAnim">
+      <UniqueIdentifier>{9B93060E-8FC8-33C6-A1BE-DD5B03E74F15}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\ProceduralAnim\AnimNode_SpiderIK.cpp">
+      <Filter>Source\ProceduralAnim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ProceduralAnim\AnimNode_SpiderIK.h">
+      <Filter>Source\ProceduralAnim</Filter>
+    </ClCompile>
+    <None Include="..\..\Source\ProceduralAnim\ProceduralAnim.Build.cs">
+      <Filter>Source\ProceduralAnim</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\ProceduralAnim\ProceduralAnim.cpp">
+      <Filter>Source\ProceduralAnim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ProceduralAnim\ProceduralAnim.h">
+      <Filter>Source\ProceduralAnim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ProceduralAnim\ProceduralAnimCharacter.cpp">
+      <Filter>Source\ProceduralAnim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ProceduralAnim\ProceduralAnimCharacter.h">
+      <Filter>Source\ProceduralAnim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ProceduralAnim\ProceduralAnimGameMode.cpp">
+      <Filter>Source\ProceduralAnim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ProceduralAnim\ProceduralAnimGameMode.h">
+      <Filter>Source\ProceduralAnim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ProceduralAnim\SpiderAnimInstance.cpp">
+      <Filter>Source\ProceduralAnim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ProceduralAnim\SpiderAnimInstance.h">
+      <Filter>Source\ProceduralAnim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ProceduralAnim\SpiderFABRIK.h">
+      <Filter>Source\ProceduralAnim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ProceduralAnim\SpiderLeg.h">
+      <Filter>Source\ProceduralAnim</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

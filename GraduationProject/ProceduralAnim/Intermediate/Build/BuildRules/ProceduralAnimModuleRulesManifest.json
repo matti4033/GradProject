@@ -1,0 +1,9 @@
+{
+	"SourceFiles": [
+		"F:\\Skola\\GradProject\\GraduationProject\\ProceduralAnim\\Source\\ProceduralAnimEditor\\ProceduralAnimEditor.Build.cs",
+		"F:\\Skola\\GradProject\\GraduationProject\\ProceduralAnim\\Source\\ProceduralAnim\\ProceduralAnim.Build.cs",
+		"F:\\Skola\\GradProject\\GraduationProject\\ProceduralAnim\\Source\\ProceduralAnim.Target.cs",
+		"F:\\Skola\\GradProject\\GraduationProject\\ProceduralAnim\\Source\\ProceduralAnimEditor.Target.cs"
+	],
+	"EngineVersion": "5.5.3"
+}
