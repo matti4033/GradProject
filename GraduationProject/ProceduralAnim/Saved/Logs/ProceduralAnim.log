@@ -1292,3 +1292,403 @@ LogConfig: Set CVar [[r.VRS.ContrastAdaptiveShading:1]]
 [2026.03.09-19.43.33:151][  0]LogTurnkeySupport: Turnkey Device: Win64@DESKTOP-L5DIHSA: (Name=DESKTOP-L5DIHSA, Type=Computer, Status=Valid, MinAllowed=10.0.19041.0, MaxAllowed=, Current=10.0.26200.0, Flags="Device_InstallSoftwareValid")
 [2026.03.09-19.43.34:230][  0]LogConfig: Branch 'TranslationPickerSettings' had been unloaded. Reloading on-demand took 0.97ms
 [2026.03.09-19.43.34:441][  0]LogLiveCoding: Display: Successfully initialized, removing startup thread
+[2026.03.09-19.43.38:852][  0]LogTcpMessaging: Initializing TcpMessaging bridge
+[2026.03.09-19.43.38:903][  0]LogUdpMessaging: Display: Work queue size set to 1024.
+[2026.03.09-19.43.38:906][  0]LogUdpMessaging: Initializing bridge on interface 0.0.0.0:0 to multicast group 230.0.0.1:6666.
+[2026.03.09-19.43.38:908][  0]LogUdpMessaging: Display: Unicast socket bound to '0.0.0.0:56598'.
+[2026.03.09-19.43.38:911][  0]LogUdpMessaging: Display: Added local interface '192.168.1.159' to multicast group '230.0.0.1:6666'
+[2026.03.09-19.43.39:234][  0]LogNNERuntimeORT: Available graphics and compute adapters:
+[2026.03.09-19.43.39:234][  0]LogNNERuntimeORT: 0: NVIDIA GeForce RTX 2080 SUPER (Compute, Graphics)
+[2026.03.09-19.43.39:235][  0]LogNNERuntimeORT: 1: Microsoft Basic Render Driver (Compute, Graphics)
+[2026.03.09-19.43.39:235][  0]LogNNERuntimeORT: No NPU adapter found!
+[2026.03.09-19.43.39:351][  0]LogNiagaraDebuggerClient: Niagara Debugger Client Initialized | Session: C3CAC009273445AE8000000000008500 | Instance: 9BF07A0A4E55D0207C7AD7B297881A83 (DESKTOP-L5DIHSA-66696).
+[2026.03.09-19.43.41:420][  0]LogMetaSound: Display: MetaSound Page Target Initialized to 'Default'
+[2026.03.09-19.43.41:425][  0]LogAudio: Display: Registering Engine Module Parameter Interfaces...
+[2026.03.09-19.43.41:470][  0]LogMetaSound: MetaSound Engine Initialized
+[2026.03.09-19.43.48:959][  0]LogStreaming: Warning: Failed to read file '../../../Engine/Plugins/Interchange/Editor/Content/Old/Tiles/Outer/alertSolid.png' error.
+[2026.03.09-19.43.48:959][  0]LogSlate: Could not find file for Slate resource: ../../../Engine/Plugins/Interchange/Editor/Content/Old/Tiles/Outer/alertSolid.png
+[2026.03.09-19.43.49:507][  0]LogConfig: Branch 'ObjectMixerSerializedData' had been unloaded. Reloading on-demand took 1.15ms
+[2026.03.09-19.43.49:613][  0]LogConfig: Branch 'Crypto' had been unloaded. Reloading on-demand took 1.06ms
+[2026.03.09-19.43.51:580][  0]LogConfig: Applying CVar settings from Section [/Script/NNEDenoiser.NNEDenoiserSettings] File [Engine]
+[2026.03.09-19.43.51:896][  0]LogAndroidPermission: UAndroidPermissionCallbackProxy::GetInstance
+[2026.03.09-19.43.52:113][  0]LogAudioCaptureCore: Display: No Audio Capture implementations found. Audio input will be silent.
+[2026.03.09-19.43.52:113][  0]LogAudioCaptureCore: Display: No Audio Capture implementations found. Audio input will be silent.
+[2026.03.09-19.43.53:277][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/glf/resources/plugInfo.json'
+[2026.03.09-19.43.53:285][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/usdHydra/resources/plugInfo.json'
+[2026.03.09-19.43.53:293][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/usdVolImaging/resources/plugInfo.json'
+[2026.03.09-19.43.53:299][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/usdImagingGL/resources/plugInfo.json'
+[2026.03.09-19.43.53:306][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/hdGp/resources/plugInfo.json'
+[2026.03.09-19.43.53:315][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/hdSt/resources/plugInfo.json'
+[2026.03.09-19.43.53:328][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/usdImaging/resources/plugInfo.json'
+[2026.03.09-19.43.53:334][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/hdStorm/resources/plugInfo.json'
+[2026.03.09-19.43.53:385][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/usdUI/resources/plugInfo.json'
+[2026.03.09-19.43.53:435][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/usdVol/resources/plugInfo.json'
+[2026.03.09-19.43.53:445][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/usdSkelImaging/resources/plugInfo.json'
+[2026.03.09-19.43.53:453][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/usdMedia/resources/plugInfo.json'
+[2026.03.09-19.43.53:462][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/hdx/resources/plugInfo.json'
+[2026.03.09-19.43.53:469][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/hd/resources/plugInfo.json'
+[2026.03.09-19.43.53:478][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/usdMtlx/resources/plugInfo.json'
+[2026.03.09-19.43.53:488][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/usdPhysics/resources/plugInfo.json'
+[2026.03.09-19.43.53:496][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/hio/resources/plugInfo.json'
+[2026.03.09-19.43.53:505][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/usdProc/resources/plugInfo.json'
+[2026.03.09-19.43.53:514][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/ndr/resources/plugInfo.json'
+[2026.03.09-19.43.53:521][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/usdProcImaging/resources/plugInfo.json'
+[2026.03.09-19.43.53:529][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/sdf/resources/plugInfo.json'
+[2026.03.09-19.43.53:536][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/hgiGL/resources/plugInfo.json'
+[2026.03.09-19.43.53:543][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/usdRiPxrImaging/resources/plugInfo.json'
+[2026.03.09-19.43.53:549][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/sdrGlslfx/resources/plugInfo.json'
+[2026.03.09-19.43.53:559][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/usdRender/resources/plugInfo.json'
+[2026.03.09-19.43.53:576][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/usdShaders/resources/plugInfo.json'
+[2026.03.09-19.43.53:583][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/ar/resources/plugInfo.json'
+[2026.03.09-19.43.53:591][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/usdShade/resources/plugInfo.json'
+[2026.03.09-19.43.53:598][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/usdAbc/resources/plugInfo.json'
+[2026.03.09-19.43.53:606][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/usd/resources/plugInfo.json'
+[2026.03.09-19.43.53:616][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/usdGeom/resources/plugInfo.json'
+[2026.03.09-19.43.53:624][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/usdRi/resources/plugInfo.json'
+[2026.03.09-19.43.53:669][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/usdSkel/resources/plugInfo.json'
+[2026.03.09-19.43.53:679][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/usdLux/resources/plugInfo.json'
+[2026.03.09-19.43.53:687][  0]LogUsd: Updated LibraryPaths for USD plugInfo.json file 'F:/Unreal/UE_5.5/Engine/Binaries/ThirdParty/USD/UsdResources/Win64/plugins/usd/resources/codegenTemplates/plugInfo.json'
+[2026.03.09-19.43.55:381][  0]SourceControl: Revision control is disabled
+[2026.03.09-19.43.55:702][  0]SourceControl: Revision control is disabled
+[2026.03.09-19.43.55:982][  0]LogCollectionManager: Loaded 0 collections in 0.001837 seconds
+[2026.03.09-19.43.55:985][  0]LogFileCache: Scanning file cache for directory 'F:/Skola/GradProject/GraduationProject/ProceduralAnim/Saved/Collections/' took 0.00s
+[2026.03.09-19.43.55:995][  0]LogFileCache: Scanning file cache for directory 'F:/Skola/GradProject/GraduationProject/ProceduralAnim/Content/Developers/Matti/Collections/' took 0.01s
+[2026.03.09-19.43.55:998][  0]LogFileCache: Scanning file cache for directory 'F:/Skola/GradProject/GraduationProject/ProceduralAnim/Content/Collections/' took 0.00s
+[2026.03.09-19.43.56:697][  0]LogStreaming: Warning: Failed to read file '../../../Engine/Plugins/Developer/PlasticSourceControl/Resources/Icon128.png' error.
+[2026.03.09-19.43.56:697][  0]LogSlate: Could not find file for Slate resource: ../../../Engine/Plugins/Developer/PlasticSourceControl/Resources/Icon128.png
+[2026.03.09-19.43.56:700][  0]LogStreaming: Warning: Failed to read file '../../../Engine/Platforms/VisionOS/Content/Editor/Slate/Launcher/Platform_VisionOS_24x.png' error.
+[2026.03.09-19.43.56:700][  0]LogSlate: Could not find file for Slate resource: ../../../Engine/Platforms/VisionOS/Content/Editor/Slate/Launcher/Platform_VisionOS_24x.png
+[2026.03.09-19.43.56:700][  0]LogStreaming: Warning: Failed to read file '../../../Engine/Platforms/VisionOS/Content/Editor/Slate/Launcher/Platform_VisionOS_128x.png' error.
+[2026.03.09-19.43.56:700][  0]LogSlate: Could not find file for Slate resource: ../../../Engine/Platforms/VisionOS/Content/Editor/Slate/Launcher/Platform_VisionOS_128x.png
+[2026.03.09-19.43.56:751][  0]LogStreaming: Warning: Failed to read file '../../../Engine/Plugins/Interchange/Editor/Content/Old/Tiles/Outer/alertSolid.png' error.
+[2026.03.09-19.43.56:751][  0]LogSlate: Could not find file for Slate resource: ../../../Engine/Plugins/Interchange/Editor/Content/Old/Tiles/Outer/alertSolid.png
+[2026.03.09-19.43.56:785][  0]LogEOSSDK: LogEOS: [Boot] EOSSDK Version 1.16.4-36651368 booting at 2026-03-09T19:43:56.784Z using C
+[2026.03.09-19.43.56:786][  0]LogEOSSDK: LogEOS: [Boot] EOSSDK Platform Properties [OS=Windows/10.0.26100.7705.64bit, ClientId=xyza7891REBVsEqSJRRNXmlS7EQHM459, ProductId=86f32f1151354e7cb39c12f8ab2c22a3, SandboxId=a01927f7421a4d4995673fe30ef46945, DeploymentId=a652a72ea1664dcab3a467891eea5f30, ProductName=ProceduralAnim, ProductVersion=++UE5+Release-5.5-CL-39772772, IsServer=false, Flags=DisableOverlay]
+[2026.03.09-19.43.56:794][  0]LogEOSSDK: LogEOSAnalytics: Start Session (User: ...)
+[2026.03.09-19.43.56:801][  0]LogEOSSDK: LogEOSOverlay: Overlay will not load, because it was explicitly disabled when creating the platform
+[2026.03.09-19.43.56:835][  0]LogEOSSDK: LogEOSAntiCheat: [AntiCheatClient] Anti-cheat client not available. Verify that the game was started using the anti-cheat bootstrapper if you intend to use it.
+[2026.03.09-19.43.56:844][  0]LogEOSSDK: LogEOS: SetApplicationStatus - OldStatus: EOS_AS_Foreground, NewStatus: EOS_AS_Foreground, Current Time: 0001.01.01-00.00.00
+[2026.03.09-19.43.56:844][  0]LogEOSSDK: LogEOS: SetNetworkStatus - OldStatus: EOS_NS_Online, NewStatus: EOS_NS_Online
+[2026.03.09-19.43.56:845][  0]LogEOSSDK: LogEOS: Updating Platform SDK Config, Time: 0.001734
+[2026.03.09-19.43.56:848][  0]LogFab: Display: Logging in using persist
+[2026.03.09-19.43.56:850][  0]LogEOSSDK: Warning: LogEOSAuth: No existing persistent auth credentials were found for automatic login.
+[2026.03.09-19.43.57:035][  0]LogUObjectArray: 45573 objects as part of root set at end of initial load.
+[2026.03.09-19.43.57:035][  0]LogUObjectArray: CloseDisregardForGC: 0/0 objects in disregard for GC pool
+[2026.03.09-19.43.57:055][  0]LogStreaming: Display: AsyncLoading2 - NotifyRegistrationComplete: Registered 36315 public script object entries (984.70 KB)
+[2026.03.09-19.43.57:055][  0]LogStreaming: Display: AsyncLoading2 - Thread Started: false, IsInitialLoad: false
+[2026.03.09-19.43.57:387][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/Engine.TickFunction. Time(ms): 1.1
+[2026.03.09-19.43.57:392][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/JsonUtilities.JsonObjectWrapper. Time(ms): 1.3
+[2026.03.09-19.43.57:395][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/Chaos.RecordedFrame. Time(ms): 1.3
+[2026.03.09-19.43.57:399][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/ToolWidgets.ActionButtonStyle. Time(ms): 1.3
+[2026.03.09-19.43.57:409][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/AIModule.EnvQueryInstanceCache. Time(ms): 2.3
+[2026.03.09-19.43.57:414][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/SubobjectDataInterface.SubobjectData. Time(ms): 1.3
+[2026.03.09-19.43.57:416][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/Sequencer.SequencerFilterBarConfig. Time(ms): 1.3
+[2026.03.09-19.43.57:422][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/ClothingSystemRuntimeCommon.ClothLODDataCommon. Time(ms): 1.9
+[2026.03.09-19.43.57:429][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/EditorWidgets.FilterBarSettings. Time(ms): 1.3
+[2026.03.09-19.43.57:432][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/Engine.AnimInstanceProxy. Time(ms): 1.3
+[2026.03.09-19.43.57:437][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/AnimGraphRuntime.AnimNode_RigidBody. Time(ms): 1.2
+[2026.03.09-19.43.57:444][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/MediaUtils.MediaPlayerOptions. Time(ms): 1.1
+[2026.03.09-19.43.57:444][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/LevelSequence.LevelSequenceBindingReferences. Time(ms): 1.0
+[2026.03.09-19.43.57:449][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/Foliage.FoliageDensityFalloff. Time(ms): 1.2
+[2026.03.09-19.43.57:452][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/Engine.BaseAttenuationSettings. Time(ms): 1.3
+[2026.03.09-19.43.57:464][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/Engine.SplineMeshComponentDescriptorBase. Time(ms): 1.2
+[2026.03.09-19.43.57:469][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/Engine.WorldPartitionStreamingQuerySource. Time(ms): 1.1
+[2026.03.09-19.43.57:486][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/Niagara.NiagaraScriptExecutionParameterStore. Time(ms): 2.6
+[2026.03.09-19.43.57:489][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/Niagara.NiagaraEmitterCompiledData. Time(ms): 2.6
+[2026.03.09-19.43.57:492][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/Niagara.NiagaraUserRedirectionParameterStore. Time(ms): 2.7
+[2026.03.09-19.43.57:495][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/HairStrandsCore.HairSolverSettings. Time(ms): 2.7
+[2026.03.09-19.43.57:496][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/HairStrandsCore.HairBendConstraint. Time(ms): 1.0
+[2026.03.09-19.43.57:499][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/TargetDeviceServices.TargetDeviceServicePong. Time(ms): 2.8
+[2026.03.09-19.43.57:502][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/Persona.PhysicsAssetRenderSettings. Time(ms): 2.8
+[2026.03.09-19.43.57:505][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/AutomationTest.AutomationTestExcludeOptions. Time(ms): 2.8
+[2026.03.09-19.43.57:509][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/AutomationController.AutomationArtifact. Time(ms): 3.3
+[2026.03.09-19.43.57:512][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/AutomationController.AutomatedTestResult. Time(ms): 2.6
+[2026.03.09-19.43.57:513][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/FunctionalTesting.AITestSpawnInfoBase. Time(ms): 1.1
+[2026.03.09-19.43.57:514][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/AIGraph.AISchemaAction_NewNode. Time(ms): 1.4
+[2026.03.09-19.43.57:516][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/BehaviorTreeEditor.DecoratorSchemaAction_NewNode. Time(ms): 1.5
+[2026.03.09-19.43.57:521][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/TemplateSequence.TemplateSectionPropertyScale. Time(ms): 1.0
+[2026.03.09-19.43.57:531][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/PythonScriptPlugin.PyTestStruct. Time(ms): 1.5
+[2026.03.09-19.43.57:536][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/Serialization.StructSerializerLWCTypesTest. Time(ms): 2.9
+[2026.03.09-19.43.57:539][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/NiagaraEditor.NiagaraSchemaAction_NewNode. Time(ms): 1.4
+[2026.03.09-19.43.57:540][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/NiagaraEditor.NiagaraGraphScriptUsageInfo. Time(ms): 1.3
+[2026.03.09-19.43.57:543][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/NiagaraEditor.NiagaraScriptVariableData. Time(ms): 1.3
+[2026.03.09-19.43.57:545][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/MetasoundFrontend.MetaSoundFrontendDocumentBuilder. Time(ms): 1.8
+[2026.03.09-19.43.57:549][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/MetasoundEditor.MetasoundEditorMemberPageDefaultStringArray. Time(ms): 1.1
+[2026.03.09-19.43.57:551][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/MetasoundEditor.MetasoundEditorGraphMemberNodeBreadcrumb. Time(ms): 1.1
+[2026.03.09-19.43.57:555][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/Synthesis.SourceEffectBitCrusherSettings. Time(ms): 1.6
+[2026.03.09-19.43.57:560][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/RigLogicModule.AnimNode_RigLogic. Time(ms): 1.3
+[2026.03.09-19.43.57:579][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/LevelSequenceEditor.LevelSequenceTrackSettings. Time(ms): 1.1
+[2026.03.09-19.43.57:585][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/LiveLinkMovieScene.MovieSceneLiveLinkSectionTemplate. Time(ms): 1.4
+[2026.03.09-19.43.57:586][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/LiveLinkEditor.LiveLinkTestFrameDataInternal. Time(ms): 1.1
+[2026.03.09-19.43.57:590][  0]LogClass: Display: AttemptToFindUninitializedScriptStructMembers took more than 1ms to process ScriptStruct /Script/MegascansPlugin.MeshInfo. Time(ms): 1.1
+[2026.03.09-19.43.57:712][  0]LogEngine: Initializing Engine...
+[2026.03.09-19.43.57:770][  0]LogStylusInput: Initializing StylusInput subsystem.
+[2026.03.09-19.43.57:784][  0]LogStats: UGameplayTagsManager::InitializeManager -  0.003 s
+[2026.03.09-19.43.58:317][  0]LogTextureFormatOodle: Display: Oodle Texture loading DLL: oo2tex_win64_2.9.11.dll
+[2026.03.09-19.43.58:537][  0]LogChaosDD: Creating Chaos Debug Draw Scene for world Untitled
+[2026.03.09-19.43.58:793][  0]LogNetVersion: Set ProjectVersion to 1.0.0.0. Version Checksum will be recalculated on next use.
+[2026.03.09-19.43.58:794][  0]LogInit: Texture streaming: Enabled
+[2026.03.09-19.43.58:975][  0]LogAnalytics: Display: [UEEditor.Rocket.Release] APIServer = https://datarouter.ol.epicgames.com/datarouter/api/v1/public/data. AppVersion = 5.5.3-39772772+++UE5+Release-5.5
+[2026.03.09-19.43.59:033][  0]LogAudio: Display: Initializing Audio Device Manager...
+[2026.03.09-19.43.59:132][  0]LogAudio: Display: Loading Default Audio Settings Objects...
+[2026.03.09-19.43.59:142][  0]LogAudio: Display: No default SoundConcurrencyObject specified (or failed to load).
+[2026.03.09-19.43.59:143][  0]LogAudio: Display: Audio Device Manager Initialized
+[2026.03.09-19.43.59:144][  0]LogAudio: Display: Creating Audio Device:                 Id: 1, Scope: Shared, Realtime: True
+[2026.03.09-19.43.59:146][  0]LogAudioMixer: Display: Audio Mixer Platform Settings:
+[2026.03.09-19.43.59:147][  0]LogAudioMixer: Display: 	Sample Rate:						  48000
+[2026.03.09-19.43.59:147][  0]LogAudioMixer: Display: 	Callback Buffer Frame Size Requested: 1024
+[2026.03.09-19.43.59:147][  0]LogAudioMixer: Display: 	Callback Buffer Frame Size To Use:	  1024
+[2026.03.09-19.43.59:147][  0]LogAudioMixer: Display: 	Number of buffers to queue:			  1
+[2026.03.09-19.43.59:147][  0]LogAudioMixer: Display: 	Max Channels (voices):				  32
+[2026.03.09-19.43.59:147][  0]LogAudioMixer: Display: 	Number of Async Source Workers:		  4
+[2026.03.09-19.43.59:147][  0]LogAudio: Display: AudioDevice MaxSources: 32
+[2026.03.09-19.43.59:150][  0]LogAudio: Display: Audio Spatialization Plugin: None (built-in).
+[2026.03.09-19.43.59:150][  0]LogAudio: Display: Audio Reverb Plugin: None (built-in).
+[2026.03.09-19.43.59:150][  0]LogAudio: Display: Audio Occlusion Plugin: None (built-in).
+[2026.03.09-19.43.59:234][  0]LogAudioMixer: Display: Initializing audio mixer using platform API: 'XAudio2'
+[2026.03.09-19.43.59:348][  0]LogAudioMixer: Display: Using Audio Hardware Device Speakers (HyperX Cloud II Wireless)
+[2026.03.09-19.43.59:354][  0]LogAudioMixer: Display: Initializing Sound Submixes...
+[2026.03.09-19.43.59:394][  0]LogAudioMixer: Display: Creating Master Submix 'MasterSubmixDefault'
+[2026.03.09-19.43.59:396][  0]LogAudioMixer: Display: Creating Master Submix 'MasterReverbSubmixDefault'
+[2026.03.09-19.43.59:401][  0]LogAudioMixer: FMixerPlatformXAudio2::StartAudioStream() called. InstanceID=1
+[2026.03.09-19.43.59:401][  0]LogAudioMixer: Display: Output buffers initialized: Frames=1024, Channels=2, Samples=2048, InstanceID=1
+[2026.03.09-19.43.59:403][  0]LogAudioMixer: Display: Starting AudioMixerPlatformInterface::RunInternal(), InstanceID=1
+[2026.03.09-19.43.59:404][  0]LogAudioMixer: Display: FMixerPlatformXAudio2::SubmitBuffer() called for the first time. InstanceID=1
+[2026.03.09-19.43.59:404][  0]LogInit: FAudioDevice initialized with ID 1.
+[2026.03.09-19.43.59:407][  0]LogAudio: Display: Audio Device (ID: 1) registered with world 'Untitled'.
+[2026.03.09-19.43.59:407][  0]LogAudioMixer: Initializing Audio Bus Subsystem for audio device with ID 1
+[2026.03.09-19.43.59:489][  0]LogCsvProfiler: Display: Metadata set : largeworldcoordinates="1"
+[2026.03.09-19.43.59:537][  0]LogInit: Undo buffer set to 256 MB
+[2026.03.09-19.43.59:538][  0]LogInit: Transaction tracking system initialized
+[2026.03.09-19.43.59:680][  0]LogSourceControl: Display: Uncontrolled Changelist persistency file loaded ../../../../../Skola/GradProject/GraduationProject/ProceduralAnim/Saved/SourceControl/UncontrolledChangelists.json
+[2026.03.09-19.44.00:599][  0]LogConfig: Branch 'LocalizationServiceSettings' had been unloaded. Reloading on-demand took 0.97ms
+[2026.03.09-19.44.00:607][  0]LocalizationService: Localization service is disabled
+[2026.03.09-19.44.00:767][  0]LogTimingProfiler: Initialize
+[2026.03.09-19.44.00:779][  0]LogTimingProfiler: OnSessionChanged
+[2026.03.09-19.44.00:779][  0]LoadingProfiler: Initialize
+[2026.03.09-19.44.00:779][  0]LoadingProfiler: OnSessionChanged
+[2026.03.09-19.44.00:781][  0]LogNetworkingProfiler: Initialize
+[2026.03.09-19.44.00:784][  0]LogNetworkingProfiler: OnSessionChanged
+[2026.03.09-19.44.00:784][  0]LogMemoryProfiler: Initialize
+[2026.03.09-19.44.00:784][  0]LogMemoryProfiler: OnSessionChanged
+[2026.03.09-19.44.02:254][  0]LogFileCache: Scanning file cache for directory 'F:/Skola/GradProject/GraduationProject/ProceduralAnim/Content/' took 0.02s
+[2026.03.09-19.44.02:735][  0]LogPython: Using Python 3.11.8
+[2026.03.09-19.44.04:336][  0]LogPython: Display: No enabled plugins with python dependencies found, skipping
+[2026.03.09-19.44.04:439][  0]LogRenderer: Requested compilation of Path Tracing RTPSOs (1 permutations).
+[2026.03.09-19.44.04:688][  0]LogLevelSequenceEditor: LevelSequenceEditor subsystem initialized.
+[2026.03.09-19.44.04:930][  0]LogStreaming: Warning: Failed to read file 'Common/Selector.png' error.
+[2026.03.09-19.44.04:930][  0]LogSlate: Could not find file for Slate resource: Common/Selector.png
+[2026.03.09-19.44.05:858][  0]LogEditorDataStorage: Initializing
+[2026.03.09-19.44.05:868][  0]LogEditorDataStorage: Initialized
+[2026.03.09-19.44.05:963][  0]LogAssetRegistry: Display: Triggering cache save on discovery complete
+[2026.03.09-19.44.05:977][  0]LogInit: Display: Engine is initialized. Leaving FEngineLoop::Init()
+[2026.03.09-19.44.05:998][  0]SourceControl: Revision control is disabled
+[2026.03.09-19.44.05:998][  0]LogUnrealEdMisc: Loading editor; pre map load, took 82.027
+[2026.03.09-19.44.06:018][  0]Cmd: MAP LOAD FILE="../../../../../Skola/GradProject/GraduationProject/ProceduralAnim/Content/ThirdPerson/Maps/ThirdPersonMap.umap" TEMPLATE=0 SHOWPROGRESS=1 FEATURELEVEL=4
+[2026.03.09-19.44.06:043][  0]LogWorld: UWorld::CleanupWorld for Untitled, bSessionEnded=true, bCleanupResources=true
+[2026.03.09-19.44.06:062][  0]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2026.03.09-19.44.06:166][  0]LogAudio: Display: Audio Device unregistered from world 'None'.
+[2026.03.09-19.44.06:227][  0]LogUObjectHash: Compacting FUObjectHashTables data took   1.06ms
+[2026.03.09-19.44.07:019][  0]LogAssetRegistry: Display: Asset registry cache written as 38.1 MiB to ../../../../../Skola/GradProject/GraduationProject/ProceduralAnim/Intermediate/CachedAssetRegistry_*.bin
+[2026.03.09-19.44.07:139][  0]LogAudio: Display: Audio Device (ID: 1) registered with world 'ThirdPersonMap'.
+[2026.03.09-19.44.07:139][  0]LogChaosDD: Creating Chaos Debug Draw Scene for world ThirdPersonMap
+[2026.03.09-19.44.07:188][  0]LogWorldPartition: ULevel::OnLevelLoaded(ThirdPersonMap)(bIsOwningWorldGameWorld=0, bIsOwningWorldPartitioned=1, InitializeForMainWorld=1, InitializeForEditor=1, InitializeForGame=0)
+[2026.03.09-19.44.07:201][  0]LogWorldPartition: Display: WorldPartition initialize started...
+[2026.03.09-19.44.07:202][  0]LogWorldPartition: UWorldPartition::Initialize : World = /Game/ThirdPerson/Maps/ThirdPersonMap.ThirdPersonMap, World Type = Editor, IsMainWorldPartition = 1, Location = V(0), Rotation = R(0), IsEditor = 1, IsGame = 0, IsPIEWorldTravel = 0, IsCooking = 0
+[2026.03.09-19.44.08:378][  0]LogWorldPartition: Display: WorldPartition initialize took 1.17 sec
+[2026.03.09-19.44.08:725][  0]LogEditorServer: Finished looking for orphan Actors (0.000 secs)
+[2026.03.09-19.44.08:799][  0]LogUObjectHash: Compacting FUObjectHashTables data took   0.69ms
+[2026.03.09-19.44.08:820][  0]Cmd: MAP CHECKDEP NOCLEARLOG
+[2026.03.09-19.44.08:869][  0]MapCheck: Map check complete: 0 Error(s), 0 Warning(s), took 37,942ms to complete.
+[2026.03.09-19.44.09:031][  0]LogUnrealEdMisc: Total Editor Startup Time, took 85.059
+[2026.03.09-19.44.09:462][  0]LogActorFactory: Loading ActorFactory Class /Script/Engine.LevelInstance
+[2026.03.09-19.44.10:847][  0]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2026.03.09-19.44.11:001][  0]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2026.03.09-19.44.11:058][  0]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2026.03.09-19.44.11:117][  0]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2026.03.09-19.44.11:821][  0]LogPakFile: Initializing PakPlatformFile
+[2026.03.09-19.44.11:871][  0]LogPakFile: Display: Mounted Pak file 'F:/Unreal/UE_5.5/FeaturePacks/StarterContent.upack', mount point: 'root:/'
+[2026.03.09-19.44.11:894][  0]LogPakFile: Initializing PakPlatformFile
+[2026.03.09-19.44.11:911][  0]LogPakFile: Display: Mounted Pak file 'F:/Unreal/UE_5.5/FeaturePacks/TP_FirstPerson.upack', mount point: 'root:/'
+[2026.03.09-19.44.11:927][  0]LogPakFile: Initializing PakPlatformFile
+[2026.03.09-19.44.11:955][  0]LogPakFile: Display: Mounted Pak file 'F:/Unreal/UE_5.5/FeaturePacks/TP_FirstPersonBP.upack', mount point: 'root:/'
+[2026.03.09-19.44.11:959][  0]LogPakFile: Initializing PakPlatformFile
+[2026.03.09-19.44.11:993][  0]LogPakFile: Display: Mounted Pak file 'F:/Unreal/UE_5.5/FeaturePacks/TP_HandheldARBP.upack', mount point: 'root:/'
+[2026.03.09-19.44.12:003][  0]LogPakFile: Initializing PakPlatformFile
+[2026.03.09-19.44.12:027][  0]LogPakFile: Display: Mounted Pak file 'F:/Unreal/UE_5.5/FeaturePacks/TP_ThirdPerson.upack', mount point: 'root:/'
+[2026.03.09-19.44.12:027][  0]LogPakFile: Initializing PakPlatformFile
+[2026.03.09-19.44.12:049][  0]LogPakFile: Display: Mounted Pak file 'F:/Unreal/UE_5.5/FeaturePacks/TP_ThirdPersonBP.upack', mount point: 'root:/'
+[2026.03.09-19.44.12:056][  0]LogPakFile: Initializing PakPlatformFile
+[2026.03.09-19.44.12:092][  0]LogPakFile: Display: Mounted Pak file 'F:/Unreal/UE_5.5/FeaturePacks/TP_TopDown.upack', mount point: 'root:/'
+[2026.03.09-19.44.12:107][  0]LogPakFile: Initializing PakPlatformFile
+[2026.03.09-19.44.12:123][  0]LogPakFile: Display: Mounted Pak file 'F:/Unreal/UE_5.5/FeaturePacks/TP_TopDownBP.upack', mount point: 'root:/'
+[2026.03.09-19.44.12:130][  0]LogPakFile: Initializing PakPlatformFile
+[2026.03.09-19.44.12:148][  0]LogPakFile: Display: Mounted Pak file 'F:/Unreal/UE_5.5/FeaturePacks/TP_VehicleAdvBP.upack', mount point: 'root:/'
+[2026.03.09-19.44.12:166][  0]LogPakFile: Initializing PakPlatformFile
+[2026.03.09-19.44.12:239][  0]LogPakFile: Display: Mounted Pak file 'F:/Unreal/UE_5.5/FeaturePacks/TP_VirtualRealityBP.upack', mount point: 'root:/'
+[2026.03.09-19.44.16:830][  0]LogSlate: Took 0.006818 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/DroidSansMono.ttf' (77K)
+[2026.03.09-19.44.17:190][  0]LogSlate: Took 0.009191 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Regular.ttf' (155K)
+[2026.03.09-19.44.17:206][  0]LogSlate: Took 0.008492 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Bold.ttf' (160K)
+[2026.03.09-19.44.17:218][  0]LogSlate: Took 0.008391 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Italic.ttf' (157K)
+[2026.03.09-19.44.17:269][  0]LogNNEDenoiser: ApplySettings: bDenoiserEnabled 1
+[2026.03.09-19.44.17:306][  0]LogNNEDenoiser: Loaded input mapping from NNEDIM_ColorAlbedoNormal_Alpha
+[2026.03.09-19.44.17:313][  0]LogNNEDenoiser: Loaded output mapping from NNEDOM_Output_Alpha
+[2026.03.09-19.44.17:314][  0]LogNNEDenoiser: Try create model instance with runtime NNERuntimeORTDml on RDG...
+[2026.03.09-19.44.17:677][  0]LogNNEDenoiser: Display: Created model instance with runtime NNERuntimeORTDml on RDG
+[2026.03.09-19.44.17:677][  0]LogNNEDenoiser: Create denoiser from asset /NNEDenoiser/NNED_Oidn2-3_Balanced_Alpha.NNED_Oidn2-3_Balanced_Alpha...
+[2026.03.09-19.44.17:724][  0]LogNNEDenoiser: Loaded input mapping from NNEDTIM_ColorAlbedoNormal_Alpha
+[2026.03.09-19.44.17:745][  0]LogNNEDenoiser: Loaded output mapping from NNEDTOM_Output_Alpha
+[2026.03.09-19.44.17:745][  0]LogNNEDenoiser: Try create model instance with runtime NNERuntimeORTDml on RDG...
+[2026.03.09-19.44.17:788][  0]LogNNEDenoiser: Display: Created model instance with runtime NNERuntimeORTDml on RDG
+[2026.03.09-19.44.17:788][  0]LogNNEDenoiser: Create temporal denoiser from asset /NNEDenoiser/NNEDT_Oidn2-3_Balanced_Alpha.NNEDT_Oidn2-3_Balanced_Alpha...
+[2026.03.09-19.44.17:922][  0]LogSlate: Took 0.010124 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Light.ttf' (167K)
+[2026.03.09-19.44.17:989][  0]LogSlate: Warning: Unable to rasterize '../../../Engine/Content/Editor/Slate/Starship/AssetIcons/SkeletalMesh_64.svg'. File could not be found
+[2026.03.09-19.44.18:252][  0]LogD3D12RHI: Creating RTPSO with 21 shaders (0 cached, 21 new) took 201.58 ms. Compile time 58.01 ms, link time 143.32 ms.
+[2026.03.09-19.44.18:319][  0]LogStall: Startup...
+[2026.03.09-19.44.18:321][  0]LogStall: Startup complete.
+[2026.03.09-19.44.18:362][  0]LogLoad: (Engine Initialization) Total time: 94.39 seconds
+[2026.03.09-19.44.18:757][  0]LogContentStreaming: Texture pool size now 1000 MB
+[2026.03.09-19.44.18:757][  0]LogCsvProfiler: Display: Metadata set : streamingpoolsizemb="1000"
+[2026.03.09-19.44.18:892][  0]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2026.03.09-19.44.18:920][  0]LogFab: Error: Login failed - error code: EOS_InvalidAuth
+[2026.03.09-19.44.18:920][  0]LogFab: Display: Logging in using exchange code
+[2026.03.09-19.44.18:920][  0]LogFab: Display: Reading exchange code from commandline
+[2026.03.09-19.44.18:920][  0]LogEOSSDK: Error: LogEOSAuth: Invalid parameter EOS_Auth_Credentials.Token reason: must not be null or empty
+[2026.03.09-19.44.18:932][  0]LogPython: Display: Running start-up script F:/Unreal/UE_5.5/Engine/Plugins/Animation/ControlRig/Content/Python/init_unreal.py... started...
+[2026.03.09-19.44.19:587][  0]LogPython: registering <class 'ControlRigWorkflows.workflow_deformation_rig_preset.provider'>
+
+[2026.03.09-19.44.19:588][  0]LogPython: Display: Running start-up script F:/Unreal/UE_5.5/Engine/Plugins/Animation/ControlRig/Content/Python/init_unreal.py... took 655.627 ms
+[2026.03.09-19.44.19:636][  0]LogLiveCoding: Display: LiveCodingConsole Arguments: ProceduralAnimEditor Win64 Development
+[2026.03.09-19.44.19:788][  1]LogChaosDD: Not creating Chaos Debug Draw Scene for world World_0
+[2026.03.09-19.44.19:812][  1]LogAssetRegistry: AssetRegistryGather time 0.3849s: AssetDataDiscovery 0.2501s, AssetDataGather 0.0444s, StoreResults 0.0904s. Wall time 56.5140s.
+	NumCachedDirectories 0. NumUncachedDirectories 1642. NumCachedFiles 7703. NumUncachedFiles 2.
+	BackgroundTickInterruptions 0.
+[2026.03.09-19.44.19:878][  1]LogSourceControl: Uncontrolled asset enumeration started...
+[2026.03.09-19.44.19:882][  1]LogCollectionManager: Fixed up redirectors for 0 collections in 0.000000 seconds (updated 0 objects)
+[2026.03.09-19.44.19:906][  1]LogFab: Error: Login failed - error code: EOS_InvalidParameters
+[2026.03.09-19.44.20:007][  2]LogEOSSDK: LogEOS: SDK Config Platform Update Request Successful, Time: 23.064398
+[2026.03.09-19.44.20:012][  2]LogEOSSDK: LogEOSAnalytics: EOS SDK Analytics disabled for route [1].
+[2026.03.09-19.44.20:019][  2]LogEOSSDK: LogEOS: Updating Product SDK Config, Time: 23.163820
+[2026.03.09-19.44.21:000][  7]LogSourceControl: Uncontrolled asset enumeration finished in 1.121354 seconds (Found 7680 uncontrolled assets)
+[2026.03.09-19.44.21:054][  7]LogEOSSDK: LogEOSAnalytics: Start Session (User: ...)
+[2026.03.09-19.44.21:382][  8]LogChaosDD: Not creating Chaos Debug Draw Scene for world World_1
+[2026.03.09-19.44.21:716][  9]LogChaosDD: Not creating Chaos Debug Draw Scene for world World_2
+[2026.03.09-19.44.21:744][  9]LogEOSSDK: LogEOS: SDK Config Product Update Request Successful, Time: 24.557417
+[2026.03.09-19.44.21:746][  9]LogEOSSDK: LogEOS: SDK Config Data - Watermark: -793980976
+[2026.03.09-19.44.21:746][  9]LogEOSSDK: LogEOS: ScheduleNextSDKConfigDataUpdate - Time: 24.557417, Update Interval: 321.938538
+[2026.03.09-19.44.22:049][ 10]LogChaosDD: Not creating Chaos Debug Draw Scene for world World_3
+[2026.03.09-19.44.22:412][ 12]LogChaosDD: Not creating Chaos Debug Draw Scene for world World_4
+[2026.03.09-19.44.23:572][ 19]LogChaosDD: Not creating Chaos Debug Draw Scene for world World_5
+[2026.03.09-19.44.26:600][337]LogDebuggerCommands: Repeating last play command: Selected Viewport
+[2026.03.09-19.44.26:625][337]LogContentBundle: [ThirdPersonMap(Standalone)] Generating Streaming for 0 Content Bundles.
+[2026.03.09-19.44.26:625][337]LogWorldPartition: Display: GenerateStreaming for 'ThirdPersonMap' started...
+[2026.03.09-19.44.26:653][337]LogWorldPartition: Display: GenerateStreaming for 'ThirdPersonMap' took 27.784 ms
+[2026.03.09-19.44.26:667][337]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2026.03.09-19.44.26:715][337]LogOnline: OSS: Created online subsystem instance for: NULL
+[2026.03.09-19.44.26:715][337]LogOnline: OSS: TryLoadSubsystemAndSetDefault: Loaded subsystem for type [NULL]
+[2026.03.09-19.44.26:718][337]LogPlayLevel: Creating play world package: /Game/ThirdPerson/Maps/UEDPIE_0_ThirdPersonMap
+[2026.03.09-19.44.26:725][337]LogPlayLevel: PIE: StaticDuplicateObject took: (0.007436s)
+[2026.03.09-19.44.26:725][337]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/ThirdPerson/Maps/ThirdPersonMap.ThirdPersonMap to /Game/ThirdPerson/Maps/UEDPIE_0_ThirdPersonMap.ThirdPersonMap (0.007485s)
+[2026.03.09-19.44.26:767][337]LogUObjectHash: Compacting FUObjectHashTables data took   0.72ms
+[2026.03.09-19.44.26:769][337]LogChaosDD: Creating Chaos Debug Draw Scene for world ThirdPersonMap
+[2026.03.09-19.44.26:774][337]LogWorldPartition: ULevel::OnLevelLoaded(ThirdPersonMap)(bIsOwningWorldGameWorld=1, bIsOwningWorldPartitioned=1, InitializeForMainWorld=1, InitializeForEditor=0, InitializeForGame=1)
+[2026.03.09-19.44.26:774][337]LogWorldPartition: Display: WorldPartition initialize started...
+[2026.03.09-19.44.26:774][337]LogWorldPartition: UWorldPartition::Initialize : World = /Game/ThirdPerson/Maps/UEDPIE_0_ThirdPersonMap.ThirdPersonMap, World Type = PIE, IsMainWorldPartition = 1, Location = V(0), Rotation = R(0), IsEditor = 0, IsGame = 0, IsPIEWorldTravel = 0, IsCooking = 0
+[2026.03.09-19.44.26:775][337]LogWorldPartition: UWorldPartition::Initialize Context : World NetMode = Standalone, IsServer = 0, IsDedicatedServer = 0, IsServerStreamingEnabled = 0, IsServerStreamingOutEnabled = 0, IsUsingMakingVisibleTransaction = 0, IsUsingMakingInvisibleTransaction = 0
+[2026.03.09-19.44.26:778][337]LogWorldPartition: Display: WorldPartition initialize took 3.723 ms (total: 1.18 sec)
+[2026.03.09-19.44.26:778][337]LogPlayLevel: PIE: World Init took: (0.008503s)
+[2026.03.09-19.44.26:779][337]LogAudio: Display: Creating Audio Device:                 Id: 2, Scope: Unique, Realtime: True
+[2026.03.09-19.44.26:779][337]LogAudioMixer: Display: Audio Mixer Platform Settings:
+[2026.03.09-19.44.26:779][337]LogAudioMixer: Display: 	Sample Rate:						  48000
+[2026.03.09-19.44.26:779][337]LogAudioMixer: Display: 	Callback Buffer Frame Size Requested: 1024
+[2026.03.09-19.44.26:779][337]LogAudioMixer: Display: 	Callback Buffer Frame Size To Use:	  1024
+[2026.03.09-19.44.26:779][337]LogAudioMixer: Display: 	Number of buffers to queue:			  1
+[2026.03.09-19.44.26:779][337]LogAudioMixer: Display: 	Max Channels (voices):				  32
+[2026.03.09-19.44.26:779][337]LogAudioMixer: Display: 	Number of Async Source Workers:		  4
+[2026.03.09-19.44.26:779][337]LogAudio: Display: AudioDevice MaxSources: 32
+[2026.03.09-19.44.26:779][337]LogAudio: Display: Audio Spatialization Plugin: None (built-in).
+[2026.03.09-19.44.26:779][337]LogAudio: Display: Audio Reverb Plugin: None (built-in).
+[2026.03.09-19.44.26:779][337]LogAudio: Display: Audio Occlusion Plugin: None (built-in).
+[2026.03.09-19.44.26:781][337]LogAudioMixer: Display: Initializing audio mixer using platform API: 'XAudio2'
+[2026.03.09-19.44.26:806][337]LogAudioMixer: Display: Using Audio Hardware Device Speakers (HyperX Cloud II Wireless)
+[2026.03.09-19.44.26:807][337]LogAudioMixer: Display: Initializing Sound Submixes...
+[2026.03.09-19.44.26:807][337]LogAudioMixer: Display: Creating Master Submix 'MasterSubmixDefault'
+[2026.03.09-19.44.26:807][337]LogAudioMixer: Display: Creating Master Submix 'MasterReverbSubmixDefault'
+[2026.03.09-19.44.26:807][337]LogAudioMixer: FMixerPlatformXAudio2::StartAudioStream() called. InstanceID=2
+[2026.03.09-19.44.26:807][337]LogAudioMixer: Display: Output buffers initialized: Frames=1024, Channels=2, Samples=2048, InstanceID=2
+[2026.03.09-19.44.26:810][337]LogAudioMixer: Display: Starting AudioMixerPlatformInterface::RunInternal(), InstanceID=2
+[2026.03.09-19.44.26:810][337]LogAudioMixer: Display: FMixerPlatformXAudio2::SubmitBuffer() called for the first time. InstanceID=2
+[2026.03.09-19.44.26:810][337]LogInit: FAudioDevice initialized with ID 2.
+[2026.03.09-19.44.26:810][337]LogAudio: Display: Audio Device (ID: 2) registered with world 'ThirdPersonMap'.
+[2026.03.09-19.44.26:810][337]LogAudioMixer: Initializing Audio Bus Subsystem for audio device with ID 2
+[2026.03.09-19.44.26:813][337]LogLoad: Game class is 'GM_Spider_C'
+[2026.03.09-19.44.26:816][337]LogWorld: Bringing World /Game/ThirdPerson/Maps/UEDPIE_0_ThirdPersonMap.ThirdPersonMap up for play (max tick rate 0) at 2026.03.09-20.44.26
+[2026.03.09-19.44.26:816][337]LogWorld: Bringing up level for play took: 0.002115
+[2026.03.09-19.44.26:819][337]LogOnline: OSS: Created online subsystem instance for: :Context_7
+[2026.03.09-19.44.26:853][337]PIE: Server logged in
+[2026.03.09-19.44.26:854][337]PIE: Play in editor total start time 0,232 seconds.
+[2026.03.09-19.44.58:364][903]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2026.03.09-19.44.58:364][903]LogWorld: BeginTearingDown for /Game/ThirdPerson/Maps/UEDPIE_0_ThirdPersonMap
+[2026.03.09-19.44.58:364][903]LogWorld: UWorld::CleanupWorld for ThirdPersonMap, bSessionEnded=true, bCleanupResources=true
+[2026.03.09-19.44.58:365][903]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2026.03.09-19.44.58:365][903]LogWorldPartition: UWorldPartition::Uninitialize : World = /Game/ThirdPerson/Maps/UEDPIE_0_ThirdPersonMap.ThirdPersonMap
+[2026.03.09-19.44.58:370][903]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2026.03.09-19.44.58:375][903]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2026.03.09-19.44.58:388][903]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2026.03.09-19.44.58:388][903]LogAudioMixer: Deinitializing Audio Bus Subsystem for audio device with ID 2
+[2026.03.09-19.44.58:389][903]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=2
+[2026.03.09-19.44.58:391][903]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=2
+[2026.03.09-19.44.58:400][903]LogUObjectHash: Compacting FUObjectHashTables data took   0.64ms
+[2026.03.09-19.44.58:444][904]LogPlayLevel: Display: Destroying online subsystem :Context_7
+[2026.03.09-19.44.59:979][ 80]LogUObjectHash: Compacting FUObjectHashTables data took   0.61ms
+[2026.03.09-19.45.00:055][ 80]LogStall: Shutdown...
+[2026.03.09-19.45.00:055][ 80]LogStall: Shutdown complete.
+[2026.03.09-19.45.00:110][ 80]LogSlate: Window 'ProceduralAnim - Unreal Editor' being destroyed
+[2026.03.09-19.45.00:192][ 80]Cmd: QUIT_EDITOR
+[2026.03.09-19.45.00:192][ 81]LogCore: Engine exit requested (reason: UUnrealEdEngine::CloseEditor())
+[2026.03.09-19.45.00:203][ 81]LogCore: Engine exit requested (reason: EngineExit() was called; note: exit was already requested)
+[2026.03.09-19.45.00:204][ 81]LogStaticMesh: Abandoning remaining async distance field tasks for shutdown
+[2026.03.09-19.45.00:204][ 81]LogStaticMesh: Abandoning remaining async card representation tasks for shutdown
+[2026.03.09-19.45.00:206][ 81]LogWorld: UWorld::CleanupWorld for ThirdPersonMap, bSessionEnded=true, bCleanupResources=true
+[2026.03.09-19.45.00:206][ 81]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2026.03.09-19.45.00:206][ 81]LogWorldPartition: UWorldPartition::Uninitialize : World = /Game/ThirdPerson/Maps/ThirdPersonMap.ThirdPersonMap
+[2026.03.09-19.45.00:228][ 81]LogStylusInput: Shutting down StylusInput subsystem.
+[2026.03.09-19.45.00:234][ 81]LogLevelSequenceEditor: LevelSequenceEditor subsystem deinitialized.
+[2026.03.09-19.45.00:237][ 81]LogWorld: UWorld::CleanupWorld for World_3, bSessionEnded=true, bCleanupResources=true
+[2026.03.09-19.45.00:237][ 81]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2026.03.09-19.45.00:237][ 81]LogWorld: UWorld::CleanupWorld for World_2, bSessionEnded=true, bCleanupResources=true
+[2026.03.09-19.45.00:237][ 81]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2026.03.09-19.45.00:237][ 81]LogWorld: UWorld::CleanupWorld for World_1, bSessionEnded=true, bCleanupResources=true
+[2026.03.09-19.45.00:237][ 81]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2026.03.09-19.45.00:238][ 81]LogWorld: UWorld::CleanupWorld for World_0, bSessionEnded=true, bCleanupResources=true
+[2026.03.09-19.45.00:238][ 81]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2026.03.09-19.45.00:239][ 81]LogWorld: UWorld::CleanupWorld for World_4, bSessionEnded=true, bCleanupResources=true
+[2026.03.09-19.45.00:239][ 81]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2026.03.09-19.45.00:239][ 81]LogWorld: UWorld::CleanupWorld for World_5, bSessionEnded=true, bCleanupResources=true
+[2026.03.09-19.45.00:239][ 81]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2026.03.09-19.45.00:244][ 81]LogStudioTelemetry: Ended StudioTelemetry Session
+[2026.03.09-19.45.00:247][ 81]LogAnalytics: Display: [UEEditor.Rocket.Release] Destroying ET Analytics provider
+[2026.03.09-19.45.00:247][ 81]LogAnalytics: Display: [UEEditor.Rocket.Release] Ended ET Analytics provider session
+[2026.03.09-19.45.00:247][ 81]LogAnalytics: Display: [UEEditor.Rocket.Release] Destroyed ET Analytics provider
+[2026.03.09-19.45.00:773][ 81]LogAudio: Display: Beginning Audio Device Manager Shutdown (Module: AudioMixerXAudio2)...
+[2026.03.09-19.45.00:773][ 81]LogAudio: Display: Destroying 1 Remaining Audio Device(s)...
+[2026.03.09-19.45.00:773][ 81]LogAudio: Display: Audio Device unregistered from world 'ThirdPersonMap'.
+[2026.03.09-19.45.00:773][ 81]LogAudio: Display: Shutting down audio device while 1 references to it are still alive. For more information, compile with INSTRUMENT_AUDIODEVICE_HANDLES.
+[2026.03.09-19.45.00:773][ 81]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=1
+[2026.03.09-19.45.00:775][ 81]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=1
+[2026.03.09-19.45.00:780][ 81]LogAudioMixer: Deinitializing Audio Bus Subsystem for audio device with ID -1
+[2026.03.09-19.45.00:780][ 81]LogAudio: Display: Audio Device Manager Shutdown
+[2026.03.09-19.45.00:781][ 81]LogWindowsTextInputMethodSystem: Activated input method: English (United Kingdom) - (Keyboard).
+[2026.03.09-19.45.00:783][ 81]LogSlate: Slate User Destroyed.  User Index 0, Is Virtual User: 0
+[2026.03.09-19.45.00:783][ 81]LogExit: Preparing to exit.
+[2026.03.09-19.45.00:835][ 81]LogUObjectHash: Compacting FUObjectHashTables data took   0.87ms
+[2026.03.09-19.45.02:001][ 81]LogEditorDataStorage: Deinitializing
+[2026.03.09-19.45.02:122][ 81]LogDemo: Cleaned up 0 splitscreen connections, owner deletion: enabled
+[2026.03.09-19.45.02:158][ 81]LogExit: Editor shut down
+[2026.03.09-19.45.02:159][ 81]LogExit: Transaction tracking system shut down
+[2026.03.09-19.45.02:486][ 81]LogExit: Object subsystem successfully closed.
+[2026.03.09-19.45.02:507][ 81]LogShaderCompilers: Display: Shaders left to compile 0
+[2026.03.09-19.45.03:429][ 81]LogMemoryProfiler: Shutdown
+[2026.03.09-19.45.03:430][ 81]LogNetworkingProfiler: Shutdown
+[2026.03.09-19.45.03:430][ 81]LoadingProfiler: Shutdown
+[2026.03.09-19.45.03:431][ 81]LogTimingProfiler: Shutdown
