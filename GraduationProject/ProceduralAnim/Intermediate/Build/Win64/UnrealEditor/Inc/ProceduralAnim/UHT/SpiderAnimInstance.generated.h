@@ -14,7 +14,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define PROCEDURALANIM_SpiderAnimInstance_generated_h
 
-#define FID_Skola_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderAnimInstance_h_10_INCLASS_NO_PURE_DECLS \
+#define FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderAnimInstance_h_10_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUSpiderAnimInstance(); \
 	friend struct Z_Construct_UClass_USpiderAnimInstance_Statics; \
@@ -23,7 +23,7 @@ public: \
 	DECLARE_SERIALIZER(USpiderAnimInstance)
 
 
-#define FID_Skola_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderAnimInstance_h_10_ENHANCED_CONSTRUCTORS \
+#define FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderAnimInstance_h_10_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API USpiderAnimInstance(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 private: \
@@ -37,12 +37,12 @@ public: \
 	NO_API virtual ~USpiderAnimInstance();
 
 
-#define FID_Skola_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderAnimInstance_h_7_PROLOG
-#define FID_Skola_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderAnimInstance_h_10_GENERATED_BODY \
+#define FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderAnimInstance_h_7_PROLOG
+#define FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderAnimInstance_h_10_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Skola_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderAnimInstance_h_10_INCLASS_NO_PURE_DECLS \
-	FID_Skola_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderAnimInstance_h_10_ENHANCED_CONSTRUCTORS \
+	FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderAnimInstance_h_10_INCLASS_NO_PURE_DECLS \
+	FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderAnimInstance_h_10_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -50,7 +50,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 template<> PROCEDURALANIM_API UClass* StaticClass<class USpiderAnimInstance>();
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID FID_Skola_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderAnimInstance_h
+#define CURRENT_FILE_ID FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderAnimInstance_h
 
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

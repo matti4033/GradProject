@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Skola\\GraduationProject\\ProceduralAnim\\Intermediate\\Build\\BuildRulesProjects\\ProceduralAnimModuleRules\\ProceduralAnimModuleRules.csproj": {}
+    "F:\\Skola\\GradProject\\GraduationProject\\ProceduralAnim\\Intermediate\\Build\\BuildRulesProjects\\ProceduralAnimModuleRules\\ProceduralAnimModuleRules.csproj": {}
   },
   "projects": {
-    "F:\\Skola\\GraduationProject\\ProceduralAnim\\Intermediate\\Build\\BuildRulesProjects\\ProceduralAnimModuleRules\\ProceduralAnimModuleRules.csproj": {
+    "F:\\Skola\\GradProject\\GraduationProject\\ProceduralAnim\\Intermediate\\Build\\BuildRulesProjects\\ProceduralAnimModuleRules\\ProceduralAnimModuleRules.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Skola\\GraduationProject\\ProceduralAnim\\Intermediate\\Build\\BuildRulesProjects\\ProceduralAnimModuleRules\\ProceduralAnimModuleRules.csproj",
+        "projectUniqueName": "F:\\Skola\\GradProject\\GraduationProject\\ProceduralAnim\\Intermediate\\Build\\BuildRulesProjects\\ProceduralAnimModuleRules\\ProceduralAnimModuleRules.csproj",
         "projectName": "ProceduralAnimModuleRules",
-        "projectPath": "F:\\Skola\\GraduationProject\\ProceduralAnim\\Intermediate\\Build\\BuildRulesProjects\\ProceduralAnimModuleRules\\ProceduralAnimModuleRules.csproj",
+        "projectPath": "F:\\Skola\\GradProject\\GraduationProject\\ProceduralAnim\\Intermediate\\Build\\BuildRulesProjects\\ProceduralAnimModuleRules\\ProceduralAnimModuleRules.csproj",
         "packagesPath": "C:\\Users\\Matti\\.nuget\\packages\\",
-        "outputPath": "F:\\Skola\\GraduationProject\\ProceduralAnim\\Intermediate\\Build\\BuildRulesProjects\\ProceduralAnimModuleRules\\obj\\",
+        "outputPath": "F:\\Skola\\GradProject\\GraduationProject\\ProceduralAnim\\Intermediate\\Build\\BuildRulesProjects\\ProceduralAnimModuleRules\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

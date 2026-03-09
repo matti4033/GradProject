@@ -14,7 +14,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define PROCEDURALANIM_ProceduralAnimCharacter_generated_h
 
-#define FID_Skola_GraduationProject_ProceduralAnim_Source_ProceduralAnim_ProceduralAnimCharacter_h_21_INCLASS_NO_PURE_DECLS \
+#define FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_ProceduralAnimCharacter_h_21_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAProceduralAnimCharacter(); \
 	friend struct Z_Construct_UClass_AProceduralAnimCharacter_Statics; \
@@ -23,7 +23,7 @@ public: \
 	DECLARE_SERIALIZER(AProceduralAnimCharacter)
 
 
-#define FID_Skola_GraduationProject_ProceduralAnim_Source_ProceduralAnim_ProceduralAnimCharacter_h_21_ENHANCED_CONSTRUCTORS \
+#define FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_ProceduralAnimCharacter_h_21_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	AProceduralAnimCharacter(AProceduralAnimCharacter&&); \
@@ -35,12 +35,12 @@ public: \
 	NO_API virtual ~AProceduralAnimCharacter();
 
 
-#define FID_Skola_GraduationProject_ProceduralAnim_Source_ProceduralAnim_ProceduralAnimCharacter_h_18_PROLOG
-#define FID_Skola_GraduationProject_ProceduralAnim_Source_ProceduralAnim_ProceduralAnimCharacter_h_21_GENERATED_BODY \
+#define FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_ProceduralAnimCharacter_h_18_PROLOG
+#define FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_ProceduralAnimCharacter_h_21_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Skola_GraduationProject_ProceduralAnim_Source_ProceduralAnim_ProceduralAnimCharacter_h_21_INCLASS_NO_PURE_DECLS \
-	FID_Skola_GraduationProject_ProceduralAnim_Source_ProceduralAnim_ProceduralAnimCharacter_h_21_ENHANCED_CONSTRUCTORS \
+	FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_ProceduralAnimCharacter_h_21_INCLASS_NO_PURE_DECLS \
+	FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_ProceduralAnimCharacter_h_21_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -48,7 +48,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 template<> PROCEDURALANIM_API UClass* StaticClass<class AProceduralAnimCharacter>();
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID FID_Skola_GraduationProject_ProceduralAnim_Source_ProceduralAnim_ProceduralAnimCharacter_h
+#define CURRENT_FILE_ID FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_ProceduralAnimCharacter_h
 
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

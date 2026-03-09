@@ -14,7 +14,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define PROCEDURALANIM_SpiderLeg_generated_h
 
-#define FID_Skola_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderLeg_h_8_GENERATED_BODY \
+#define FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderLeg_h_8_GENERATED_BODY \
 	friend struct Z_Construct_UScriptStruct_FSpiderLeg_Statics; \
 	PROCEDURALANIM_API static class UScriptStruct* StaticStruct();
 
@@ -22,7 +22,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 template<> PROCEDURALANIM_API UScriptStruct* StaticStruct<struct FSpiderLeg>();
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID FID_Skola_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderLeg_h
+#define CURRENT_FILE_ID FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderLeg_h
 
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

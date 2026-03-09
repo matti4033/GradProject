@@ -14,7 +14,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define PROCEDURALANIM_AnimNode_SpiderIK_generated_h
 
-#define FID_Skola_GraduationProject_ProceduralAnim_Source_ProceduralAnim_AnimNode_SpiderIK_h_10_GENERATED_BODY \
+#define FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_AnimNode_SpiderIK_h_10_GENERATED_BODY \
 	friend struct Z_Construct_UScriptStruct_FAnimNode_SpiderIK_Statics; \
 	static class UScriptStruct* StaticStruct(); \
 	typedef FAnimNode_SkeletalControlBase Super;
@@ -23,7 +23,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 template<> PROCEDURALANIM_API UScriptStruct* StaticStruct<struct FAnimNode_SpiderIK>();
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID FID_Skola_GraduationProject_ProceduralAnim_Source_ProceduralAnim_AnimNode_SpiderIK_h
+#define CURRENT_FILE_ID FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_AnimNode_SpiderIK_h
 
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

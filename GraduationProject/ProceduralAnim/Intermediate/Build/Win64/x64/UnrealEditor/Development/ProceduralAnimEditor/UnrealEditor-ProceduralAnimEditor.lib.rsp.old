@@ -1,0 +1,16 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UnrealEditor-ProceduralAnimEditor.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"F:\Skola\GraduationProject\ProceduralAnim\Intermediate\Build\Win64\x64\ProceduralAnimEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.h.obj"
+"F:\Skola\GraduationProject\ProceduralAnim\Intermediate\Build\Win64\x64\UnrealEditor\Development\ProceduralAnimEditor\AnimGraphNode_SpiderIK.gen.cpp.obj"
+"F:\Skola\GraduationProject\ProceduralAnim\Intermediate\Build\Win64\x64\UnrealEditor\Development\ProceduralAnimEditor\ProceduralAnimEditor.init.gen.cpp.obj"
+"F:\Skola\GraduationProject\ProceduralAnim\Intermediate\Build\Win64\x64\UnrealEditor\Development\ProceduralAnimEditor\AnimGraphNode_SpiderIK.cpp.obj"
+"F:\Skola\GraduationProject\ProceduralAnim\Intermediate\Build\Win64\x64\UnrealEditor\Development\ProceduralAnimEditor\ProceduralAnimEditor.cpp.obj"
+"F:\Skola\GraduationProject\ProceduralAnim\Intermediate\Build\Win64\x64\UnrealEditor\Development\ProceduralAnimEditor\PerModuleInline.gen.cpp.obj"
+"F:\Skola\GraduationProject\ProceduralAnim\Intermediate\Build\Win64\x64\UnrealEditor\Development\ProceduralAnimEditor\Default.rc2.res"
+/OUT:"F:\Skola\GraduationProject\ProceduralAnim\Intermediate\Build\Win64\x64\UnrealEditor\Development\ProceduralAnimEditor\UnrealEditor-ProceduralAnimEditor.lib"
