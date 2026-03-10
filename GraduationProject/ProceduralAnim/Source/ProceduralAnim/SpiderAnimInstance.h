@@ -25,6 +25,10 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Tuning")
     float StepHeight = 20.f;
 
+    float GroupCooldown[2] = { 0.f, 0.f };
+    UPROPERTY(EditAnywhere, Category = "Spider|Tuning")
+    float StepCooldown = 0.25f;
+
 private:
     void UpdateLegs(float DeltaSeconds);
     void DoRaycast(FSpiderLeg& Leg);

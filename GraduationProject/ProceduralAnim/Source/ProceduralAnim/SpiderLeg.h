@@ -20,6 +20,8 @@ struct FSpiderLeg
     UPROPERTY(EditAnywhere) float UpperMaxAngle = 80.f;
     UPROPERTY(EditAnywhere) float MidMaxAngle = 120.f;
     UPROPERTY(EditAnywhere) float TipMaxAngle = 120.f;
+    UPROPERTY(EditAnywhere) int32 GaitGroup = 0;
+
 
 
     bool    bIsStepping = false;

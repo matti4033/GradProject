@@ -49,71 +49,89 @@ void FAnimNode_SpiderIK::EvaluateSkeletalControl_AnyThread(
         FVector MidPos = MidCS.GetLocation();
         FVector TipPos = TipCS.GetLocation();
 
-        // Convert foot target to component space
+        FVector ActualUpperDir = (MidPos - UpperPos).GetSafeNormal();
+        FVector ActualMidDir = (TipPos - MidPos).GetSafeNormal();
+        float UpperLen = FVector::Dist(UpperPos, MidPos);
+        float MidLen = FVector::Dist(MidPos, TipPos);
+
         FVector LocalTarget =
             ComponentTransform.InverseTransformPosition(Leg.CurrentFootPos);
 
-        // Calculate tip bone length
-        float TipBoneLen = FVector::Dist(MidPos, TipPos);
+        FVector TipEnd = TipPos + ActualMidDir * MidLen;
 
-        // Virtual 4th point — the actual end of the tip bone
-        FVector TipDir = (TipPos - MidPos).GetSafeNormal();
-        FVector TipEnd = TipPos + TipDir * TipBoneLen;
-
-        // Bias mid bone upward for knee arc
-        FVector MidBias = MidPos;
-        MidBias.Z += Leg.PoleOffset.Z;
-
-        // Build 4-point chain
-        // Chain[3] = TipEnd is the point that reaches LocalTarget
-        TArray<FVector> Chain = { UpperPos, MidBias, TipPos, TipEnd };
+        TArray<FVector> Chain = { UpperPos, MidPos, TipPos, TipEnd };
         FSpiderFABRIK::Solve(Chain, LocalTarget, 10);
+       
+        FVector RootToTip = (Chain[3] - Chain[0]).GetSafeNormal();
 
-        // Directions from solved chain
-        // Chain[3] == LocalTarget after solving
+        FVector OutwardDir = UpperPos.GetSafeNormal();
+        FVector WorldPole = UpperPos +
+            (OutwardDir + FVector(0, 0, 6.f)).GetSafeNormal() *
+            Leg.PoleOffset.Z;
+
+        FVector RootToPole = WorldPole - Chain[0];
+        FVector PoleOnPlane = (RootToPole -
+            FVector::DotProduct(RootToPole, RootToTip) * RootToTip
+            ).GetSafeNormal();
+
+        FVector RootToKnee = Chain[1] - Chain[0];
+        FVector KneeOnPlane = (RootToKnee -
+            FVector::DotProduct(RootToKnee, RootToTip) * RootToTip
+            ).GetSafeNormal();
+
+        if (!PoleOnPlane.IsNearlyZero(0.001f) &&
+            !KneeOnPlane.IsNearlyZero(0.001f))
+        {
+            FQuat PoleRot = FQuat::FindBetweenNormals(
+                KneeOnPlane, PoleOnPlane);
+            FVector NewKneeOffset = PoleRot.RotateVector(RootToKnee);
+            Chain[1] = Chain[0] + NewKneeOffset.GetSafeNormal() * UpperLen;
+        }
+
+        Chain[2].X = FMath::Lerp(Chain[1].X, Chain[3].X, 0.5f);
+        Chain[2].Y = FMath::Lerp(Chain[1].Y, Chain[3].Y, 0.5f);
+        Chain[2].Z = FMath::Lerp(Chain[1].Z, Chain[3].Z, 0.3f);
+
+        FVector KneeToAnkle = Chain[2] - Chain[1];
+        if (KneeToAnkle.Size() > MidLen)
+            Chain[2] = Chain[1] + KneeToAnkle.GetSafeNormal() * MidLen;
+
+        if (Chain[2].Z < Chain[3].Z + 20.f)
+            Chain[2].Z = Chain[3].Z + 20.f;
+
+        Chain[3] = LocalTarget;
+
+        FVector AnkleToTarget = (Chain[3] - Chain[2]).GetSafeNormal();
+        Chain[2] = Chain[3] - AnkleToTarget * MidLen;
+        
         FVector UpperDir = (Chain[1] - Chain[0]).GetSafeNormal();
         FVector MidDir = (Chain[2] - Chain[1]).GetSafeNormal();
         FVector TipSolvedDir = (Chain[3] - Chain[2]).GetSafeNormal();
 
-        // Reconstruct positions using bone lengths
-        float UpperLen = FVector::Dist(UpperPos, MidPos);
-        float MidLen = FVector::Dist(MidPos, TipPos);
-
-        Chain[1] = Chain[0] + UpperDir * UpperLen;
-        Chain[2] = Chain[1] + MidDir * MidLen;
-        // Chain[3] is virtual — not written to any bone
-
-        // Apply to transforms
         FTransform NewUpperCS = UpperCS;
         FTransform NewMidCS = MidCS;
         FTransform NewTipCS = TipCS;
 
-        NewUpperCS.SetLocation(Chain[0]);
+        NewUpperCS.SetLocation(UpperPos);
         NewMidCS.SetLocation(Chain[1]);
         NewTipCS.SetLocation(Chain[2]);
 
-        auto GetBoneAxis = [](const FTransform& Transform, const FVector& ActualBoneDir) -> FVector
+        auto GetBoneAxis = [](
+            const FTransform& Transform,
+            const FVector& ActualBoneDir) -> FVector
             {
                 FQuat Rot = Transform.GetRotation();
                 FVector Axes[6] = {
-                     Rot.GetForwardVector(),
-                    -Rot.GetForwardVector(),
-                     Rot.GetRightVector(),
-                    -Rot.GetRightVector(),
-                     Rot.GetUpVector(),
-                    -Rot.GetUpVector()
+                     Rot.GetForwardVector(), -Rot.GetForwardVector(),
+                     Rot.GetRightVector(),   -Rot.GetRightVector(),
+                     Rot.GetUpVector(),      -Rot.GetUpVector()
                 };
-
                 FVector BestAxis = Axes[0];
-                float BestDot = -1.f;
+                float   BestDot = -1.f;
                 for (const FVector& Axis : Axes)
                 {
                     float Dot = FVector::DotProduct(Axis, ActualBoneDir);
-                    if (Dot > BestDot)
-                    {
-                        BestDot = Dot;
-                        BestAxis = Axis;
-                    }
+                    if (Dot > BestDot) { BestDot = Dot; BestAxis = Axis; }
                 }
                 return BestAxis;
             };
@@ -130,22 +148,9 @@ void FAnimNode_SpiderIK::EvaluateSkeletalControl_AnyThread(
                 Transform.SetRotation(Delta * Transform.GetRotation());
             };
 
-        FVector ActualUpperDir = (MidPos - UpperPos).GetSafeNormal();
-        FVector ActualMidDir = (TipPos - MidPos).GetSafeNormal();
-        FVector ActualTipDir = (TipEnd - TipPos).GetSafeNormal();
-
-        if (Leg.UpperBone == FName("LegBL_Upper") || Leg.UpperBone == FName("LegBR_Upper"))
-        {
-            UE_LOG(LogTemp, Warning, TEXT("=== %s ==="), *Leg.UpperBone.ToString());
-            UE_LOG(LogTemp, Warning, TEXT("UpperPos: %s"), *UpperPos.ToString());
-            UE_LOG(LogTemp, Warning, TEXT("MidPos: %s"), *MidPos.ToString());
-            UE_LOG(LogTemp, Warning, TEXT("ActualUpperDir: %s"), *ActualUpperDir.ToString());
-            UE_LOG(LogTemp, Warning, TEXT("LocalTarget: %s"), *LocalTarget.ToString());
-        }
-
         ApplyRotation(NewUpperCS, UpperDir, ActualUpperDir);
         ApplyRotation(NewMidCS, MidDir, ActualMidDir);
-        ApplyRotation(NewTipCS, TipSolvedDir, ActualTipDir);
+        ApplyRotation(NewTipCS, TipSolvedDir, ActualMidDir);
 
         OutBoneTransforms.Add(FBoneTransform(UpperIdx, NewUpperCS));
         OutBoneTransforms.Add(FBoneTransform(MidIdx, NewMidCS));
