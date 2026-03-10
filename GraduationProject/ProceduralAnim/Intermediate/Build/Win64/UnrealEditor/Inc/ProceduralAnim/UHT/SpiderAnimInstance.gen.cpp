@@ -65,8 +65,8 @@ struct Z_Construct_UClass_USpiderAnimInstance_Statics
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_USpiderAnimInstance_Statics::NewProp_Legs_Inner = { "Legs", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UScriptStruct_FSpiderLeg, METADATA_PARAMS(0, nullptr) }; // 4220318781
-const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_USpiderAnimInstance_Statics::NewProp_Legs = { "Legs", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USpiderAnimInstance, Legs), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Legs_MetaData), NewProp_Legs_MetaData) }; // 4220318781
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_USpiderAnimInstance_Statics::NewProp_Legs_Inner = { "Legs", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UScriptStruct_FSpiderLeg, METADATA_PARAMS(0, nullptr) }; // 1474427033
+const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_USpiderAnimInstance_Statics::NewProp_Legs = { "Legs", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USpiderAnimInstance, Legs), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Legs_MetaData), NewProp_Legs_MetaData) }; // 1474427033
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_USpiderAnimInstance_Statics::NewProp_StepThreshold = { "StepThreshold", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USpiderAnimInstance, StepThreshold), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_StepThreshold_MetaData), NewProp_StepThreshold_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_USpiderAnimInstance_Statics::NewProp_StepDuration = { "StepDuration", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USpiderAnimInstance, StepDuration), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_StepDuration_MetaData), NewProp_StepDuration_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_USpiderAnimInstance_Statics::NewProp_StepHeight = { "StepHeight", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USpiderAnimInstance, StepHeight), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_StepHeight_MetaData), NewProp_StepHeight_MetaData) };
@@ -119,10 +119,10 @@ USpiderAnimInstance::~USpiderAnimInstance() {}
 struct Z_CompiledInDeferFile_FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderAnimInstance_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_USpiderAnimInstance, USpiderAnimInstance::StaticClass, TEXT("USpiderAnimInstance"), &Z_Registration_Info_UClass_USpiderAnimInstance, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(USpiderAnimInstance), 3740432193U) },
+		{ Z_Construct_UClass_USpiderAnimInstance, USpiderAnimInstance::StaticClass, TEXT("USpiderAnimInstance"), &Z_Registration_Info_UClass_USpiderAnimInstance, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(USpiderAnimInstance), 2448103204U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderAnimInstance_h_2452891839(TEXT("/Script/ProceduralAnim"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderAnimInstance_h_1041647466(TEXT("/Script/ProceduralAnim"),
 	Z_CompiledInDeferFile_FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderAnimInstance_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderAnimInstance_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

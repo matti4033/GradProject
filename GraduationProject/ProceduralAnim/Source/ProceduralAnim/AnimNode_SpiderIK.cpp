@@ -10,32 +10,31 @@ bool FAnimNode_SpiderIK::IsValidToEvaluate(
     return true;
 }
 
-// Clamps a direction to within MaxAngleDegrees of a reference direction
-static FVector ClampDirection(
-    const FVector& Direction,
-    const FVector& ReferenceDirection,
-    float MaxAngleDegrees)
-{
-    if (Direction.IsNearlyZero() || ReferenceDirection.IsNearlyZero())
-        return Direction;
-
-    float AngleRad = FMath::DegreesToRadians(MaxAngleDegrees);
-    float DotProduct = FVector::DotProduct(
-        Direction.GetSafeNormal(),
-        ReferenceDirection.GetSafeNormal());
-    float CurrentAngle = FMath::Acos(FMath::Clamp(DotProduct, -1.f, 1.f));
-
-    if (CurrentAngle <= AngleRad)
-        return Direction;
-
-    FVector Cross = FVector::CrossProduct(ReferenceDirection, Direction);
-    if (Cross.IsNearlyZero())
-        return ReferenceDirection;
-
-    FQuat LimitRot(Cross.GetSafeNormal(), AngleRad);
-    return LimitRot.RotateVector(ReferenceDirection).GetSafeNormal()
-        * Direction.Size();
-}
+//static FVector ClampDirection(
+//    const FVector& Direction,
+//    const FVector& ReferenceDirection,
+//    float MaxAngleDegrees)
+//{
+//    if (Direction.IsNearlyZero() || ReferenceDirection.IsNearlyZero())
+//        return Direction;
+//
+//    float AngleRad = FMath::DegreesToRadians(MaxAngleDegrees);
+//    float DotProduct = FVector::DotProduct(
+//        Direction.GetSafeNormal(),
+//        ReferenceDirection.GetSafeNormal());
+//    float CurrentAngle = FMath::Acos(FMath::Clamp(DotProduct, -1.f, 1.f));
+//
+//    if (CurrentAngle <= AngleRad)
+//        return Direction;
+//
+//    FVector Cross = FVector::CrossProduct(ReferenceDirection, Direction);
+//    if (Cross.IsNearlyZero())
+//        return ReferenceDirection;
+//
+//    FQuat LimitRot(Cross.GetSafeNormal(), AngleRad);
+//    return LimitRot.RotateVector(ReferenceDirection).GetSafeNormal()
+//        * Direction.Size();
+//}
 
 void FAnimNode_SpiderIK::EvaluateSkeletalControl_AnyThread(
     FComponentSpacePoseContext& Output,
@@ -82,40 +81,31 @@ void FAnimNode_SpiderIK::EvaluateSkeletalControl_AnyThread(
 
         float TipBoneLen = FVector::Dist(MidPos, TipPos);
 
-        // Bias mid bone upward
         FVector MidBias = MidPos;
         MidBias.Z += Leg.PoleOffset.Z;
 
-        // First pass — solve to get approximate MidDir
+        // First pass
         TArray<FVector> Chain = { UpperPos, MidBias, TipPos };
         FSpiderFABRIK::Solve(Chain, LocalTarget, 5);
 
-        // Use solved MidDir to offset target back by tip length
+        // offset target back by tip length
         FVector ApproxMidDir = (Chain[2] - Chain[1]).GetSafeNormal();
         FVector AdjustedTarget = LocalTarget - ApproxMidDir * TipBoneLen;
 
-        // Second pass — solve to adjusted target
+        // Second pass
         // Now tip END lands at LocalTarget
         Chain = { UpperPos, MidBias, TipPos };
         FSpiderFABRIK::Solve(Chain, AdjustedTarget, 10);
 
-        // Directions
         FVector UpperDir = (Chain[1] - Chain[0]).GetSafeNormal();
         FVector MidDir = (Chain[2] - Chain[1]).GetSafeNormal();
         FVector TipDir = (LocalTarget - Chain[2]).GetSafeNormal();
 
-        // Apply joint constraints
-        FVector BodyRef = UpperPos.GetSafeNormal();
-        FVector ClampedUpperDir = ClampDirection(UpperDir, BodyRef, Leg.UpperMaxAngle);
-        FVector ClampedMidDir = ClampDirection(MidDir, ClampedUpperDir, Leg.MidMaxAngle);
-        FVector ClampedTipDir = ClampDirection(TipDir, ClampedMidDir, Leg.TipMaxAngle);
-
-        // Reconstruct chain from clamped directions
         float UpperLen = FVector::Dist(UpperPos, MidPos);
         float MidLen = FVector::Dist(MidPos, TipPos);
 
-        Chain[1] = Chain[0] + ClampedUpperDir * UpperLen;
-        Chain[2] = Chain[1] + ClampedMidDir * MidLen;
+        Chain[1] = Chain[0] + UpperDir * UpperLen;
+        Chain[2] = Chain[1] + MidDir * MidLen;
 
         FTransform NewUpperCS = UpperCS;
         FTransform NewMidCS = MidCS;
@@ -135,9 +125,9 @@ void FAnimNode_SpiderIK::EvaluateSkeletalControl_AnyThread(
                 Transform.SetRotation(Delta * Transform.GetRotation());
             };
 
-        ApplyRotation(NewUpperCS, ClampedUpperDir);
-        ApplyRotation(NewMidCS, ClampedMidDir);
-        ApplyRotation(NewTipCS, ClampedTipDir);
+        ApplyRotation(NewUpperCS, UpperDir);
+        ApplyRotation(NewMidCS, MidDir);
+        ApplyRotation(NewTipCS, TipDir);
 
         OutBoneTransforms.Add(FBoneTransform(UpperIdx, NewUpperCS));
         OutBoneTransforms.Add(FBoneTransform(MidIdx, NewMidCS));

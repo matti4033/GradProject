@@ -85,7 +85,7 @@ void USpiderAnimInstance::DoRaycast(FSpiderLeg& Leg)
 
     if (bHit)
     {
-        Leg.DesiredFootPos = Hit.Location + Hit.Normal * 2.f;
+        Leg.DesiredFootPos = Hit.Location + Hit.Normal * Leg.FootGroundOffset;
     }
     else
     {

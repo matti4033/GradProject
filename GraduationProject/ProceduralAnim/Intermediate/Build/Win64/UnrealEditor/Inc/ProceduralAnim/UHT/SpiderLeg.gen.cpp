@@ -64,6 +64,10 @@ struct Z_Construct_UScriptStruct_FSpiderLeg_Statics
 		{ "Category", "SpiderLeg" },
 		{ "ModuleRelativePath", "SpiderLeg.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_FootGroundOffset_MetaData[] = {
+		{ "Category", "SpiderLeg" },
+		{ "ModuleRelativePath", "SpiderLeg.h" },
+	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_UpperMaxAngle_MetaData[] = {
 		{ "Category", "SpiderLeg" },
 		{ "ModuleRelativePath", "SpiderLeg.h" },
@@ -84,6 +88,7 @@ struct Z_Construct_UScriptStruct_FSpiderLeg_Statics
 	static const UECodeGen_Private::FStructPropertyParams NewProp_DesiredFootPos;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_RestOffset;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_PoleOffset;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_FootGroundOffset;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_UpperMaxAngle;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_MidMaxAngle;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_TipMaxAngle;
@@ -101,6 +106,7 @@ const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FSpider
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FSpiderLeg_Statics::NewProp_DesiredFootPos = { "DesiredFootPos", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FSpiderLeg, DesiredFootPos), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_DesiredFootPos_MetaData), NewProp_DesiredFootPos_MetaData) };
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FSpiderLeg_Statics::NewProp_RestOffset = { "RestOffset", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FSpiderLeg, RestOffset), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_RestOffset_MetaData), NewProp_RestOffset_MetaData) };
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FSpiderLeg_Statics::NewProp_PoleOffset = { "PoleOffset", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FSpiderLeg, PoleOffset), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_PoleOffset_MetaData), NewProp_PoleOffset_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FSpiderLeg_Statics::NewProp_FootGroundOffset = { "FootGroundOffset", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FSpiderLeg, FootGroundOffset), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_FootGroundOffset_MetaData), NewProp_FootGroundOffset_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FSpiderLeg_Statics::NewProp_UpperMaxAngle = { "UpperMaxAngle", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FSpiderLeg, UpperMaxAngle), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_UpperMaxAngle_MetaData), NewProp_UpperMaxAngle_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FSpiderLeg_Statics::NewProp_MidMaxAngle = { "MidMaxAngle", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FSpiderLeg, MidMaxAngle), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MidMaxAngle_MetaData), NewProp_MidMaxAngle_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FSpiderLeg_Statics::NewProp_TipMaxAngle = { "TipMaxAngle", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FSpiderLeg, TipMaxAngle), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_TipMaxAngle_MetaData), NewProp_TipMaxAngle_MetaData) };
@@ -112,6 +118,7 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FS
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSpiderLeg_Statics::NewProp_DesiredFootPos,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSpiderLeg_Statics::NewProp_RestOffset,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSpiderLeg_Statics::NewProp_PoleOffset,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSpiderLeg_Statics::NewProp_FootGroundOffset,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSpiderLeg_Statics::NewProp_UpperMaxAngle,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSpiderLeg_Statics::NewProp_MidMaxAngle,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSpiderLeg_Statics::NewProp_TipMaxAngle,
@@ -144,10 +151,10 @@ UScriptStruct* Z_Construct_UScriptStruct_FSpiderLeg()
 struct Z_CompiledInDeferFile_FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderLeg_h_Statics
 {
 	static constexpr FStructRegisterCompiledInInfo ScriptStructInfo[] = {
-		{ FSpiderLeg::StaticStruct, Z_Construct_UScriptStruct_FSpiderLeg_Statics::NewStructOps, TEXT("SpiderLeg"), &Z_Registration_Info_UScriptStruct_SpiderLeg, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FSpiderLeg), 4220318781U) },
+		{ FSpiderLeg::StaticStruct, Z_Construct_UScriptStruct_FSpiderLeg_Statics::NewStructOps, TEXT("SpiderLeg"), &Z_Registration_Info_UScriptStruct_SpiderLeg, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FSpiderLeg), 1474427033U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderLeg_h_2522941534(TEXT("/Script/ProceduralAnim"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderLeg_h_642372471(TEXT("/Script/ProceduralAnim"),
 	nullptr, 0,
 	Z_CompiledInDeferFile_FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderLeg_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderLeg_h_Statics::ScriptStructInfo),
 	nullptr, 0);

@@ -1,14 +1,14 @@
-"F:\Skola\GraduationProject\ProceduralAnim\Source\ProceduralAnim\SpiderAnimInstance.cpp"
+"F:\Skola\GradProject\GraduationProject\ProceduralAnim\Source\ProceduralAnim\SpiderAnimInstance.cpp"
 /external:W0
 /external:I "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\INCLUDE"
 /external:I "C:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\ucrt"
 /external:I "C:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\shared"
 /external:I "C:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\um"
 /external:I "C:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\winrt"
-/FI"F:\Skola\GraduationProject\ProceduralAnim\Intermediate\Build\Win64\x64\UnrealEditor\Development\ProceduralAnim\Definitions.ProceduralAnim.h"
-/Fo"F:\Skola\GraduationProject\ProceduralAnim\Intermediate\Build\Win64\x64\UnrealEditor\Development\ProceduralAnim\SingleFile\SpiderAnimInstance.cpp.lcpt.obj"
-/sourceDependencies"F:\Skola\GraduationProject\ProceduralAnim\Intermediate\Build\Win64\x64\UnrealEditor\Development\ProceduralAnim\SingleFile\SpiderAnimInstance.cpp.dep.lcpt.json"
-@"F:\Skola\GraduationProject\ProceduralAnim\Intermediate\Build\Win64\x64\UnrealEditor\Development\ProceduralAnim\ProceduralAnim.Shared.rsp"
+/FI"F:\Skola\GradProject\GraduationProject\ProceduralAnim\Intermediate\Build\Win64\x64\UnrealEditor\Development\ProceduralAnim\Definitions.ProceduralAnim.h"
+/Fo"F:\Skola\GradProject\GraduationProject\ProceduralAnim\Intermediate\Build\Win64\x64\UnrealEditor\Development\ProceduralAnim\SingleFile\SpiderAnimInstance.cpp.lcpt.obj"
+/sourceDependencies"F:\Skola\GradProject\GraduationProject\ProceduralAnim\Intermediate\Build\Win64\x64\UnrealEditor\Development\ProceduralAnim\SingleFile\SpiderAnimInstance.cpp.dep.lcpt.json"
+@"F:\Skola\GradProject\GraduationProject\ProceduralAnim\Intermediate\Build\Win64\x64\UnrealEditor\Development\ProceduralAnim\ProceduralAnim.Shared.rsp"
 /d2ssa-cfg-question-
 /Zc:inline
 /nologo

@@ -1,12 +1,12 @@
-"F:\Skola\GraduationProject\ProceduralAnim\Source\ProceduralAnim\SpiderAnimInstance.cpp"
-/FI"F:\Skola\GraduationProject\ProceduralAnim\Intermediate\Build\Win64\x64\ProceduralAnimEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.h"
-/FI"F:\Skola\GraduationProject\ProceduralAnim\Intermediate\Build\Win64\x64\UnrealEditor\Development\ProceduralAnim\Definitions.ProceduralAnim.h"
-/Yu"F:\Skola\GraduationProject\ProceduralAnim\Intermediate\Build\Win64\x64\ProceduralAnimEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.h"
-/Fp"F:\Skola\GraduationProject\ProceduralAnim\Intermediate\Build\Win64\x64\ProceduralAnimEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.h.pch"
-/Fo"F:\Skola\GraduationProject\ProceduralAnim\Intermediate\Build\Win64\x64\UnrealEditor\Development\ProceduralAnim\SpiderAnimInstance.cpp.lc.obj"
-/experimental:log "F:\Skola\GraduationProject\ProceduralAnim\Intermediate\Build\Win64\x64\UnrealEditor\Development\ProceduralAnim\SpiderAnimInstance.cpp.sarif"
-/sourceDependencies"F:\Skola\GraduationProject\ProceduralAnim\Intermediate\Build\Win64\x64\UnrealEditor\Development\ProceduralAnim\SpiderAnimInstance.cpp.dep.lc.json"
-@"F:\Skola\GraduationProject\ProceduralAnim\Intermediate\Build\Win64\x64\UnrealEditor\Development\ProceduralAnim\ProceduralAnim.Shared.rsp"
+"F:\Skola\GradProject\GraduationProject\ProceduralAnim\Source\ProceduralAnim\SpiderAnimInstance.cpp"
+/FI"F:\Skola\GradProject\GraduationProject\ProceduralAnim\Intermediate\Build\Win64\x64\ProceduralAnimEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.h"
+/FI"F:\Skola\GradProject\GraduationProject\ProceduralAnim\Intermediate\Build\Win64\x64\UnrealEditor\Development\ProceduralAnim\Definitions.ProceduralAnim.h"
+/Yu"F:\Skola\GradProject\GraduationProject\ProceduralAnim\Intermediate\Build\Win64\x64\ProceduralAnimEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.h"
+/Fp"F:\Skola\GradProject\GraduationProject\ProceduralAnim\Intermediate\Build\Win64\x64\ProceduralAnimEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.h.pch"
+/Fo"F:\Skola\GradProject\GraduationProject\ProceduralAnim\Intermediate\Build\Win64\x64\UnrealEditor\Development\ProceduralAnim\SpiderAnimInstance.cpp.lc.obj"
+/experimental:log "F:\Skola\GradProject\GraduationProject\ProceduralAnim\Intermediate\Build\Win64\x64\UnrealEditor\Development\ProceduralAnim\SpiderAnimInstance.cpp.sarif"
+/sourceDependencies"F:\Skola\GradProject\GraduationProject\ProceduralAnim\Intermediate\Build\Win64\x64\UnrealEditor\Development\ProceduralAnim\SpiderAnimInstance.cpp.dep.lc.json"
+@"F:\Skola\GradProject\GraduationProject\ProceduralAnim\Intermediate\Build\Win64\x64\UnrealEditor\Development\ProceduralAnim\ProceduralAnim.Shared.rsp"
 /d2ssa-cfg-question-
 /Zc:inline
 /nologo
