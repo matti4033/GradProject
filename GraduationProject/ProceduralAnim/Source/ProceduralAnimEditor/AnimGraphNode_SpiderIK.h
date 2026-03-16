@@ -11,11 +11,9 @@ class PROCEDURALANIMEDITOR_API UAnimGraphNode_SpiderIK
     GENERATED_BODY()
 
 public:
-    // The runtime node this editor node wraps
     UPROPERTY(EditAnywhere, Category = "Settings")
     FAnimNode_SpiderIK Node;
 
-    // AnimGraph editor interface
     virtual FText GetNodeTitle(ENodeTitleType::Type TitleType) 
         const override;
     virtual FText GetTooltipText() const override;

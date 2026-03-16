@@ -3,13 +3,13 @@
 FText UAnimGraphNode_SpiderIK::GetNodeTitle(
     ENodeTitleType::Type TitleType) const
 {
-    return FText::FromString("Spider IK (FABRIK)");
+    return FText::FromString("Spider IK");
 }
 
 FText UAnimGraphNode_SpiderIK::GetTooltipText() const
 {
     return FText::FromString(
-        "Procedural spider leg IK using custom FABRIK solver.");
+        "spider leg IK FABRIK solver.");
 }
 
 FText UAnimGraphNode_SpiderIK::GetControllerDescription() const

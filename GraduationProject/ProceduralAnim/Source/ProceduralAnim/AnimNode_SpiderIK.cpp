@@ -54,56 +54,35 @@ void FAnimNode_SpiderIK::EvaluateSkeletalControl_AnyThread(
         float UpperLen = FVector::Dist(UpperPos, MidPos);
         float MidLen = FVector::Dist(MidPos, TipPos);
 
+
         FVector LocalTarget =
             ComponentTransform.InverseTransformPosition(Leg.CurrentFootPos);
 
-        FVector TipEnd = TipPos + ActualMidDir * MidLen;
+        float HeightDiff = FMath::Max(0.f, LocalTarget.Z - UpperPos.Z);
+        float UpwardBias = 2.f + HeightDiff * 0.05f;
 
-        TArray<FVector> Chain = { UpperPos, MidPos, TipPos, TipEnd };
-        FSpiderFABRIK::Solve(Chain, LocalTarget, 10);
-       
-        FVector RootToTip = (Chain[3] - Chain[0]).GetSafeNormal();
+        FVector UpDir = SpiderInstance->SurfaceNormal;
 
         FVector OutwardDir = UpperPos.GetSafeNormal();
-        FVector WorldPole = UpperPos +
-            (OutwardDir + FVector(0, 0, 6.f)).GetSafeNormal() *
-            Leg.PoleOffset.Z;
+        FVector PoleDir = (OutwardDir + UpDir * UpwardBias).GetSafeNormal();
+        FVector BiasedKnee = UpperPos + PoleDir * UpperLen;
+        FVector BiasedAnkle = BiasedKnee + ActualMidDir * MidLen;
+        FVector BiasedTipEnd = BiasedAnkle + ActualMidDir * MidLen;
 
-        FVector RootToPole = WorldPole - Chain[0];
-        FVector PoleOnPlane = (RootToPole -
-            FVector::DotProduct(RootToPole, RootToTip) * RootToTip
-            ).GetSafeNormal();
+        TArray<FVector> Chain = { UpperPos, BiasedKnee, BiasedAnkle, BiasedTipEnd };
+        FSpiderFABRIK::Solve(Chain, LocalTarget, 20);
 
-        FVector RootToKnee = Chain[1] - Chain[0];
-        FVector KneeOnPlane = (RootToKnee -
-            FVector::DotProduct(RootToKnee, RootToTip) * RootToTip
-            ).GetSafeNormal();
-
-        if (!PoleOnPlane.IsNearlyZero(0.001f) &&
-            !KneeOnPlane.IsNearlyZero(0.001f))
+        float MinAnkleZ = Chain[3].Z + 40.f;
+        if (Chain[2].Z < MinAnkleZ)
         {
-            FQuat PoleRot = FQuat::FindBetweenNormals(
-                KneeOnPlane, PoleOnPlane);
-            FVector NewKneeOffset = PoleRot.RotateVector(RootToKnee);
-            Chain[1] = Chain[0] + NewKneeOffset.GetSafeNormal() * UpperLen;
+            Chain[2].Z = MinAnkleZ;
+            FVector AnkleToRoot = (Chain[0] - Chain[2]).GetSafeNormal();
+            Chain[1] = Chain[2] + AnkleToRoot * MidLen;
+            FVector RootToKnee = Chain[1] - Chain[0];
+            if (RootToKnee.Size() > UpperLen)
+                Chain[1] = Chain[0] + RootToKnee.GetSafeNormal() * UpperLen;
         }
 
-        Chain[2].X = FMath::Lerp(Chain[1].X, Chain[3].X, 0.5f);
-        Chain[2].Y = FMath::Lerp(Chain[1].Y, Chain[3].Y, 0.5f);
-        Chain[2].Z = FMath::Lerp(Chain[1].Z, Chain[3].Z, 0.3f);
-
-        FVector KneeToAnkle = Chain[2] - Chain[1];
-        if (KneeToAnkle.Size() > MidLen)
-            Chain[2] = Chain[1] + KneeToAnkle.GetSafeNormal() * MidLen;
-
-        if (Chain[2].Z < Chain[3].Z + 20.f)
-            Chain[2].Z = Chain[3].Z + 20.f;
-
-        Chain[3] = LocalTarget;
-
-        FVector AnkleToTarget = (Chain[3] - Chain[2]).GetSafeNormal();
-        Chain[2] = Chain[3] - AnkleToTarget * MidLen;
-        
         FVector UpperDir = (Chain[1] - Chain[0]).GetSafeNormal();
         FVector MidDir = (Chain[2] - Chain[1]).GetSafeNormal();
         FVector TipSolvedDir = (Chain[3] - Chain[2]).GetSafeNormal();

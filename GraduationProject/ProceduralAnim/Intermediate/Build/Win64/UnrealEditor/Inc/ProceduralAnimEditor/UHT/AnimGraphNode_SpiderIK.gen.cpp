@@ -36,13 +36,7 @@ struct Z_Construct_UClass_UAnimGraphNode_SpiderIK_Statics
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Node_MetaData[] = {
 		{ "Category", "Settings" },
-#if !UE_BUILD_SHIPPING
-		{ "Comment", "// The runtime node this editor node wraps\n" },
-#endif
 		{ "ModuleRelativePath", "AnimGraphNode_SpiderIK.h" },
-#if !UE_BUILD_SHIPPING
-		{ "ToolTip", "The runtime node this editor node wraps" },
-#endif
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FStructPropertyParams NewProp_Node;
@@ -99,10 +93,10 @@ UAnimGraphNode_SpiderIK::~UAnimGraphNode_SpiderIK() {}
 struct Z_CompiledInDeferFile_FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnimEditor_AnimGraphNode_SpiderIK_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UAnimGraphNode_SpiderIK, UAnimGraphNode_SpiderIK::StaticClass, TEXT("UAnimGraphNode_SpiderIK"), &Z_Registration_Info_UClass_UAnimGraphNode_SpiderIK, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UAnimGraphNode_SpiderIK), 3006861614U) },
+		{ Z_Construct_UClass_UAnimGraphNode_SpiderIK, UAnimGraphNode_SpiderIK::StaticClass, TEXT("UAnimGraphNode_SpiderIK"), &Z_Registration_Info_UClass_UAnimGraphNode_SpiderIK, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UAnimGraphNode_SpiderIK), 3814136921U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnimEditor_AnimGraphNode_SpiderIK_h_3413378143(TEXT("/Script/ProceduralAnimEditor"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnimEditor_AnimGraphNode_SpiderIK_h_3666867120(TEXT("/Script/ProceduralAnimEditor"),
 	Z_CompiledInDeferFile_FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnimEditor_AnimGraphNode_SpiderIK_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnimEditor_AnimGraphNode_SpiderIK_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

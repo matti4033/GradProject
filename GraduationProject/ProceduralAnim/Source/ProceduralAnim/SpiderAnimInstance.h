@@ -24,10 +24,13 @@ public:
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Tuning")
     float StepHeight = 20.f;
+    UPROPERTY(EditAnywhere, Category = "Tuning")
+    float StepCooldown = 0.25f;
 
     float GroupCooldown[2] = { 0.f, 0.f };
-    UPROPERTY(EditAnywhere, Category = "Spider|Tuning")
-    float StepCooldown = 0.25f;
+
+    UPROPERTY(BlueprintReadWrite, Category = "Body")
+    FVector SurfaceNormal = FVector(0, 0, 1.f);
 
 private:
     void UpdateLegs(float DeltaSeconds);

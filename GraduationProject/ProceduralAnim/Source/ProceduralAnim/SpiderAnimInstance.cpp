@@ -150,8 +150,8 @@ void USpiderAnimInstance::DoRaycast(FSpiderLeg& Leg)
         .TransformPosition(Leg.RestOffset);
     WorldOffset += PredictionOffset;
 
-    FVector Start = WorldOffset + FVector(0, 0, 300.f);
-    FVector End = WorldOffset - FVector(0, 0, 500.f);
+    FVector Start = WorldOffset + SurfaceNormal * 300.f;
+    FVector End = WorldOffset - SurfaceNormal * 500.f;
 
     FHitResult Hit;
     FCollisionQueryParams Params;

@@ -12,6 +12,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeSpiderAnimInstance() {}
 
 // Begin Cross Module References
+COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 ENGINE_API UClass* Z_Construct_UClass_UAnimInstance();
 PROCEDURALANIM_API UClass* Z_Construct_UClass_USpiderAnimInstance();
 PROCEDURALANIM_API UClass* Z_Construct_UClass_USpiderAnimInstance_NoRegister();
@@ -53,7 +54,11 @@ struct Z_Construct_UClass_USpiderAnimInstance_Statics
 		{ "ModuleRelativePath", "SpiderAnimInstance.h" },
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_StepCooldown_MetaData[] = {
-		{ "Category", "Spider|Tuning" },
+		{ "Category", "Tuning" },
+		{ "ModuleRelativePath", "SpiderAnimInstance.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_SurfaceNormal_MetaData[] = {
+		{ "Category", "Body" },
 		{ "ModuleRelativePath", "SpiderAnimInstance.h" },
 	};
 #endif // WITH_METADATA
@@ -63,6 +68,7 @@ struct Z_Construct_UClass_USpiderAnimInstance_Statics
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_StepDuration;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_StepHeight;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_StepCooldown;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_SurfaceNormal;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -76,6 +82,7 @@ const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_USpiderAnimInst
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_USpiderAnimInstance_Statics::NewProp_StepDuration = { "StepDuration", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USpiderAnimInstance, StepDuration), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_StepDuration_MetaData), NewProp_StepDuration_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_USpiderAnimInstance_Statics::NewProp_StepHeight = { "StepHeight", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USpiderAnimInstance, StepHeight), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_StepHeight_MetaData), NewProp_StepHeight_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_USpiderAnimInstance_Statics::NewProp_StepCooldown = { "StepCooldown", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USpiderAnimInstance, StepCooldown), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_StepCooldown_MetaData), NewProp_StepCooldown_MetaData) };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_USpiderAnimInstance_Statics::NewProp_SurfaceNormal = { "SurfaceNormal", nullptr, (EPropertyFlags)0x0010000000000004, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USpiderAnimInstance, SurfaceNormal), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SurfaceNormal_MetaData), NewProp_SurfaceNormal_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_USpiderAnimInstance_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USpiderAnimInstance_Statics::NewProp_Legs_Inner,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USpiderAnimInstance_Statics::NewProp_Legs,
@@ -83,6 +90,7 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_USpiderAn
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USpiderAnimInstance_Statics::NewProp_StepDuration,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USpiderAnimInstance_Statics::NewProp_StepHeight,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USpiderAnimInstance_Statics::NewProp_StepCooldown,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USpiderAnimInstance_Statics::NewProp_SurfaceNormal,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_USpiderAnimInstance_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_USpiderAnimInstance_Statics::DependentSingletons[])() = {
@@ -126,10 +134,10 @@ USpiderAnimInstance::~USpiderAnimInstance() {}
 struct Z_CompiledInDeferFile_FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderAnimInstance_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_USpiderAnimInstance, USpiderAnimInstance::StaticClass, TEXT("USpiderAnimInstance"), &Z_Registration_Info_UClass_USpiderAnimInstance, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(USpiderAnimInstance), 3207272438U) },
+		{ Z_Construct_UClass_USpiderAnimInstance, USpiderAnimInstance::StaticClass, TEXT("USpiderAnimInstance"), &Z_Registration_Info_UClass_USpiderAnimInstance, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(USpiderAnimInstance), 3664119154U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderAnimInstance_h_3506983709(TEXT("/Script/ProceduralAnim"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderAnimInstance_h_447862242(TEXT("/Script/ProceduralAnim"),
 	Z_CompiledInDeferFile_FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderAnimInstance_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderAnimInstance_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
