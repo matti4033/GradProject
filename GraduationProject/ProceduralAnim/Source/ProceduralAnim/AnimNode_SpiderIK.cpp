@@ -84,6 +84,20 @@ void FAnimNode_SpiderIK::EvaluateSkeletalControl_AnyThread(
         }
 
         FVector UpperDir = (Chain[1] - Chain[0]).GetSafeNormal();
+
+        FVector RootToTarget = (Chain[3] - Chain[0]).GetSafeNormal();
+        FVector RootToKnee = (Chain[1] - Chain[0]).GetSafeNormal();
+        FVector LegPlaneNormal = FVector::CrossProduct(RootToKnee, RootToTarget).GetSafeNormal();
+
+        if (!LegPlaneNormal.IsNearlyZero())
+        {
+            FVector AnkleOffset = Chain[2] - Chain[1];
+            float SidewaysDist = FVector::DotProduct(AnkleOffset, LegPlaneNormal);
+            AnkleOffset = AnkleOffset - SidewaysDist * LegPlaneNormal;
+            if (!AnkleOffset.IsNearlyZero())
+                Chain[2] = Chain[1] + AnkleOffset.GetSafeNormal() * MidLen;
+        }
+
         FVector MidDir = (Chain[2] - Chain[1]).GetSafeNormal();
         FVector TipSolvedDir = (Chain[3] - Chain[2]).GetSafeNormal();
 

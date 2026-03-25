@@ -84,10 +84,22 @@
     <ClCompile Include="..\..\Source\ProceduralAnim\SpiderAnimInstance.h">
       <Filter>Source\ProceduralAnim</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\ProceduralAnim\SpiderCharacter.cpp">
+      <Filter>Source\ProceduralAnim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ProceduralAnim\SpiderCharacter.h">
+      <Filter>Source\ProceduralAnim</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\ProceduralAnim\SpiderFABRIK.h">
       <Filter>Source\ProceduralAnim</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ProceduralAnim\SpiderLeg.h">
+      <Filter>Source\ProceduralAnim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ProceduralAnim\SpiderMovementComponent.cpp">
+      <Filter>Source\ProceduralAnim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ProceduralAnim\SpiderMovementComponent.h">
       <Filter>Source\ProceduralAnim</Filter>
     </ClCompile>
   </ItemGroup>

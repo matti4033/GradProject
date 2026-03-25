@@ -21,6 +21,7 @@ struct FSpiderLeg
     UPROPERTY(EditAnywhere) float MidMaxAngle = 120.f;
     UPROPERTY(EditAnywhere) float TipMaxAngle = 120.f;
     UPROPERTY(EditAnywhere) int32 GaitGroup = 0;
+    UPROPERTY() FVector LastSurfaceNormal = FVector(0, 0, 1.f);
 
 
 

@@ -1,0 +1,92 @@
+// Copyright Epic Games, Inc. All Rights Reserved.
+/*===========================================================================
+	Generated code exported from UnrealHeaderTool.
+	DO NOT modify this manually! Edit the corresponding .h files instead!
+===========================================================================*/
+
+#include "UObject/GeneratedCppIncludes.h"
+#include "ProceduralAnim/SpiderCharacter.h"
+PRAGMA_DISABLE_DEPRECATION_WARNINGS
+void EmptyLinkFunctionForGeneratedCodeSpiderCharacter() {}
+
+// Begin Cross Module References
+ENGINE_API UClass* Z_Construct_UClass_ACharacter();
+PROCEDURALANIM_API UClass* Z_Construct_UClass_ASpiderCharacter();
+PROCEDURALANIM_API UClass* Z_Construct_UClass_ASpiderCharacter_NoRegister();
+UPackage* Z_Construct_UPackage__Script_ProceduralAnim();
+// End Cross Module References
+
+// Begin Class ASpiderCharacter
+void ASpiderCharacter::StaticRegisterNativesASpiderCharacter()
+{
+}
+IMPLEMENT_CLASS_NO_AUTO_REGISTRATION(ASpiderCharacter);
+UClass* Z_Construct_UClass_ASpiderCharacter_NoRegister()
+{
+	return ASpiderCharacter::StaticClass();
+}
+struct Z_Construct_UClass_ASpiderCharacter_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
+		{ "HideCategories", "Navigation" },
+		{ "IncludePath", "SpiderCharacter.h" },
+		{ "ModuleRelativePath", "SpiderCharacter.h" },
+		{ "ObjectInitializerConstructorDeclared", "" },
+	};
+#endif // WITH_METADATA
+	static UObject* (*const DependentSingletons[])();
+	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
+		TCppClassTypeTraits<ASpiderCharacter>::IsAbstract,
+	};
+	static const UECodeGen_Private::FClassParams ClassParams;
+};
+UObject* (*const Z_Construct_UClass_ASpiderCharacter_Statics::DependentSingletons[])() = {
+	(UObject* (*)())Z_Construct_UClass_ACharacter,
+	(UObject* (*)())Z_Construct_UPackage__Script_ProceduralAnim,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_ASpiderCharacter_Statics::DependentSingletons) < 16);
+const UECodeGen_Private::FClassParams Z_Construct_UClass_ASpiderCharacter_Statics::ClassParams = {
+	&ASpiderCharacter::StaticClass,
+	"Game",
+	&StaticCppClassTypeInfo,
+	DependentSingletons,
+	nullptr,
+	nullptr,
+	nullptr,
+	UE_ARRAY_COUNT(DependentSingletons),
+	0,
+	0,
+	0,
+	0x009000A4u,
+	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ASpiderCharacter_Statics::Class_MetaDataParams), Z_Construct_UClass_ASpiderCharacter_Statics::Class_MetaDataParams)
+};
+UClass* Z_Construct_UClass_ASpiderCharacter()
+{
+	if (!Z_Registration_Info_UClass_ASpiderCharacter.OuterSingleton)
+	{
+		UECodeGen_Private::ConstructUClass(Z_Registration_Info_UClass_ASpiderCharacter.OuterSingleton, Z_Construct_UClass_ASpiderCharacter_Statics::ClassParams);
+	}
+	return Z_Registration_Info_UClass_ASpiderCharacter.OuterSingleton;
+}
+template<> PROCEDURALANIM_API UClass* StaticClass<ASpiderCharacter>()
+{
+	return ASpiderCharacter::StaticClass();
+}
+DEFINE_VTABLE_PTR_HELPER_CTOR(ASpiderCharacter);
+ASpiderCharacter::~ASpiderCharacter() {}
+// End Class ASpiderCharacter
+
+// Begin Registration
+struct Z_CompiledInDeferFile_FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderCharacter_h_Statics
+{
+	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
+		{ Z_Construct_UClass_ASpiderCharacter, ASpiderCharacter::StaticClass, TEXT("ASpiderCharacter"), &Z_Registration_Info_UClass_ASpiderCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ASpiderCharacter), 803549574U) },
+	};
+};
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderCharacter_h_896881190(TEXT("/Script/ProceduralAnim"),
+	Z_CompiledInDeferFile_FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderCharacter_h_Statics::ClassInfo),
+	nullptr, 0,
+	nullptr, 0);
+// End Registration
+PRAGMA_ENABLE_DEPRECATION_WARNINGS
