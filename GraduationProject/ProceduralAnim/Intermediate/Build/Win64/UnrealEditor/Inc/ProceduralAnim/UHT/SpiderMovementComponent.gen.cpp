@@ -49,7 +49,11 @@ struct Z_Construct_UClass_USpiderMovementComponent_Statics
 		{ "Category", "Spider" },
 		{ "ModuleRelativePath", "SpiderMovementComponent.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_TargetSurfaceNormal_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_TransitionAlpha_MetaData[] = {
+		{ "Category", "Spider" },
+		{ "ModuleRelativePath", "SpiderMovementComponent.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_WallDetected_MetaData[] = {
 		{ "Category", "Spider" },
 		{ "ModuleRelativePath", "SpiderMovementComponent.h" },
 	};
@@ -58,7 +62,9 @@ struct Z_Construct_UClass_USpiderMovementComponent_Statics
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_WallDetectDistance;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_WallDetectRadius;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_GravityDir;
-	static const UECodeGen_Private::FStructPropertyParams NewProp_TargetSurfaceNormal;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_TransitionAlpha;
+	static void NewProp_WallDetected_SetBit(void* Obj);
+	static const UECodeGen_Private::FBoolPropertyParams NewProp_WallDetected;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -70,13 +76,19 @@ const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_USpiderMovement
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_USpiderMovementComponent_Statics::NewProp_WallDetectDistance = { "WallDetectDistance", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USpiderMovementComponent, WallDetectDistance), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_WallDetectDistance_MetaData), NewProp_WallDetectDistance_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_USpiderMovementComponent_Statics::NewProp_WallDetectRadius = { "WallDetectRadius", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USpiderMovementComponent, WallDetectRadius), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_WallDetectRadius_MetaData), NewProp_WallDetectRadius_MetaData) };
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_USpiderMovementComponent_Statics::NewProp_GravityDir = { "GravityDir", nullptr, (EPropertyFlags)0x0010000000000014, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USpiderMovementComponent, GravityDir), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GravityDir_MetaData), NewProp_GravityDir_MetaData) };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_USpiderMovementComponent_Statics::NewProp_TargetSurfaceNormal = { "TargetSurfaceNormal", nullptr, (EPropertyFlags)0x0010000000000004, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USpiderMovementComponent, TargetSurfaceNormal), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_TargetSurfaceNormal_MetaData), NewProp_TargetSurfaceNormal_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_USpiderMovementComponent_Statics::NewProp_TransitionAlpha = { "TransitionAlpha", nullptr, (EPropertyFlags)0x0010000000000014, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USpiderMovementComponent, TransitionAlpha), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_TransitionAlpha_MetaData), NewProp_TransitionAlpha_MetaData) };
+void Z_Construct_UClass_USpiderMovementComponent_Statics::NewProp_WallDetected_SetBit(void* Obj)
+{
+	((USpiderMovementComponent*)Obj)->WallDetected = 1;
+}
+const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_USpiderMovementComponent_Statics::NewProp_WallDetected = { "WallDetected", nullptr, (EPropertyFlags)0x0010000000000014, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(USpiderMovementComponent), &Z_Construct_UClass_USpiderMovementComponent_Statics::NewProp_WallDetected_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_WallDetected_MetaData), NewProp_WallDetected_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_USpiderMovementComponent_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USpiderMovementComponent_Statics::NewProp_SurfaceAlignSpeed,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USpiderMovementComponent_Statics::NewProp_WallDetectDistance,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USpiderMovementComponent_Statics::NewProp_WallDetectRadius,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USpiderMovementComponent_Statics::NewProp_GravityDir,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USpiderMovementComponent_Statics::NewProp_TargetSurfaceNormal,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USpiderMovementComponent_Statics::NewProp_TransitionAlpha,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USpiderMovementComponent_Statics::NewProp_WallDetected,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_USpiderMovementComponent_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_USpiderMovementComponent_Statics::DependentSingletons[])() = {
@@ -120,10 +132,10 @@ USpiderMovementComponent::~USpiderMovementComponent() {}
 struct Z_CompiledInDeferFile_FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderMovementComponent_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_USpiderMovementComponent, USpiderMovementComponent::StaticClass, TEXT("USpiderMovementComponent"), &Z_Registration_Info_UClass_USpiderMovementComponent, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(USpiderMovementComponent), 828749693U) },
+		{ Z_Construct_UClass_USpiderMovementComponent, USpiderMovementComponent::StaticClass, TEXT("USpiderMovementComponent"), &Z_Registration_Info_UClass_USpiderMovementComponent, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(USpiderMovementComponent), 405332871U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderMovementComponent_h_1612128111(TEXT("/Script/ProceduralAnim"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderMovementComponent_h_588352641(TEXT("/Script/ProceduralAnim"),
 	Z_CompiledInDeferFile_FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderMovementComponent_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderMovementComponent_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

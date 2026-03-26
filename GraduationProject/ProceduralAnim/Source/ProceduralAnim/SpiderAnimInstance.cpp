@@ -21,6 +21,19 @@ void USpiderAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 
 void USpiderAnimInstance::UpdateLegs(float DeltaSeconds)
 {
+    USpiderMovementComponent* SpiderMove = Cast<USpiderMovementComponent>(
+        Owner->GetMovementComponent());
+    if (SpiderMove)
+        SurfaceNormal = -SpiderMove->GravityDir;
+
+    float UpDot = FVector::DotProduct(
+        Owner->GetActorUpVector(), FVector(0, 0, 1.f));
+    if (UpDot > 0.95f)
+    {
+        for (FSpiderLeg& Leg : Legs)
+            Leg.LastSurfaceNormal = FVector(0, 0, 1.f);
+    }
+
     GroupCooldown[0] = FMath::Max(0.f, GroupCooldown[0] - DeltaSeconds);
     GroupCooldown[1] = FMath::Max(0.f, GroupCooldown[1] - DeltaSeconds);
 
@@ -31,8 +44,12 @@ void USpiderAnimInstance::UpdateLegs(float DeltaSeconds)
 
     float TurnRate = (DeltaSeconds > 0.f) ? (YawDelta / DeltaSeconds) : 0.f;
     float TurnAlpha = FMath::Clamp(TurnRate / TurnRateFullScale, 0.f, 1.f);
+
+    float TransitionAlpha = SpiderMove ? SpiderMove->TransitionAlpha : 0.f;
+    float TransitionThresholdScale = FMath::Lerp(1.f, 3.f, TransitionAlpha);
     float EffectiveThreshold = FMath::Lerp(
-        StepThreshold, StepThreshold * TurnStepThresholdScale, TurnAlpha);
+        StepThreshold, StepThreshold * TurnStepThresholdScale, TurnAlpha)
+        * TransitionThresholdScale;
 
     for (FSpiderLeg& Leg : Legs)
         DoRaycast(Leg);
@@ -49,35 +66,38 @@ void USpiderAnimInstance::UpdateLegs(float DeltaSeconds)
         if (Leg.UpperBone == FName("LegML_Upper")) MLPos = Leg.CurrentFootPos;
     }
 
-    for (FSpiderLeg& Leg : Legs)
+    if (TransitionAlpha < 0.2f)
     {
-        if (Leg.UpperBone == FName("LegMR_Upper") && !FRPos.IsNearlyZero())
+        for (FSpiderLeg& Leg : Legs)
         {
-            float FrontDot = FVector::DotProduct(FRPos, Forward);
-            float MidDot = FVector::DotProduct(Leg.DesiredFootPos, Forward);
-            if (MidDot > FrontDot)
-                Leg.DesiredFootPos -= Forward * (MidDot - FrontDot);
-        }
-        if (Leg.UpperBone == FName("LegML_Upper") && !FLPos.IsNearlyZero())
-        {
-            float FrontDot = FVector::DotProduct(FLPos, Forward);
-            float MidDot = FVector::DotProduct(Leg.DesiredFootPos, Forward);
-            if (MidDot > FrontDot)
-                Leg.DesiredFootPos -= Forward * (MidDot - FrontDot);
-        }
-        if (Leg.UpperBone == FName("LegRR_Upper") && !MRPos.IsNearlyZero())
-        {
-            float MidDotVal = FVector::DotProduct(MRPos, Forward);
-            float RearDot = FVector::DotProduct(Leg.DesiredFootPos, Forward);
-            if (RearDot > MidDotVal)
-                Leg.DesiredFootPos -= Forward * (RearDot - MidDotVal);
-        }
-        if (Leg.UpperBone == FName("LegRL_Upper") && !MLPos.IsNearlyZero())
-        {
-            float MidDotVal = FVector::DotProduct(MLPos, Forward);
-            float RearDot = FVector::DotProduct(Leg.DesiredFootPos, Forward);
-            if (RearDot > MidDotVal)
-                Leg.DesiredFootPos -= Forward * (RearDot - MidDotVal);
+            if (Leg.UpperBone == FName("LegMR_Upper") && !FRPos.IsNearlyZero())
+            {
+                float FrontDot = FVector::DotProduct(FRPos, Forward);
+                float MidDot = FVector::DotProduct(Leg.DesiredFootPos, Forward);
+                if (MidDot > FrontDot)
+                    Leg.DesiredFootPos -= Forward * (MidDot - FrontDot);
+            }
+            if (Leg.UpperBone == FName("LegML_Upper") && !FLPos.IsNearlyZero())
+            {
+                float FrontDot = FVector::DotProduct(FLPos, Forward);
+                float MidDot = FVector::DotProduct(Leg.DesiredFootPos, Forward);
+                if (MidDot > FrontDot)
+                    Leg.DesiredFootPos -= Forward * (MidDot - FrontDot);
+            }
+            if (Leg.UpperBone == FName("LegRR_Upper") && !MRPos.IsNearlyZero())
+            {
+                float MidDotVal = FVector::DotProduct(MRPos, Forward);
+                float RearDot = FVector::DotProduct(Leg.DesiredFootPos, Forward);
+                if (RearDot > MidDotVal)
+                    Leg.DesiredFootPos -= Forward * (RearDot - MidDotVal);
+            }
+            if (Leg.UpperBone == FName("LegRL_Upper") && !MLPos.IsNearlyZero())
+            {
+                float MidDotVal = FVector::DotProduct(MLPos, Forward);
+                float RearDot = FVector::DotProduct(Leg.DesiredFootPos, Forward);
+                if (RearDot > MidDotVal)
+                    Leg.DesiredFootPos -= Forward * (RearDot - MidDotVal);
+            }
         }
     }
 
@@ -149,27 +169,39 @@ void USpiderAnimInstance::UpdateLegs(float DeltaSeconds)
             Leg.bIsStepping ? FColor::Yellow : FColor::Green,
             false, -1.f);
     }
-    FVector NormalSum = FVector::ZeroVector;
-    int32 PlantedCount = 0;
-    for (const FSpiderLeg& Leg : Legs)
+
+    if (SpiderMove)
     {
-        if (!Leg.bIsStepping)
+        SurfaceNormal = -SpiderMove->GravityDir;
+
+        FVector ActorUp = Owner->GetActorUpVector();
+        FVector NormalSum = FVector::ZeroVector;
+        int32 WallFeet = 0;
+
+        for (const FSpiderLeg& Leg : Legs)
         {
-            NormalSum += Leg.LastSurfaceNormal;
-            PlantedCount++;
+            if (!Leg.bIsStepping && !Leg.LastSurfaceNormal.IsNearlyZero())
+            {
+                float Dot = FVector::DotProduct(Leg.LastSurfaceNormal, ActorUp);
+                if (Dot < 0.7f)
+                {
+                    NormalSum += Leg.LastSurfaceNormal;
+                    WallFeet++;
+                }
+            }
+        }
+
+        if (WallFeet > 0)
+        {
+            FVector AvgWallNormal = (NormalSum / WallFeet).GetSafeNormal();
+            float WallFraction = (float)WallFeet / Legs.Num();
+            SpiderMove->NotifyFootNormals(AvgWallNormal, WallFraction);
+        }
+        else
+        {
+            SpiderMove->NotifyFootNormals(FVector(0, 0, 1.f), 0.f);
         }
     }
-
-    if (PlantedCount > 0)
-    {
-        FVector TargetNormal = (NormalSum / PlantedCount).GetSafeNormal();
-        SurfaceNormal = FMath::VInterpTo(
-            SurfaceNormal, TargetNormal, DeltaSeconds, 5.f);
-    }
-    USpiderMovementComponent* SpiderMove = Cast<USpiderMovementComponent>(
-        Owner->GetMovementComponent());
-    if (SpiderMove)
-        SpiderMove->TargetSurfaceNormal = SurfaceNormal;
 }
 
 void USpiderAnimInstance::UpdateBody(float DeltaSeconds)
@@ -202,10 +234,15 @@ void USpiderAnimInstance::UpdateBody(float DeltaSeconds)
     BodyHeightOffset = FMath::FInterpTo(
         BodyHeightOffset, TargetOffset, DeltaSeconds, BodyHeightInterpSpeed);
 
-    FVector FrontCenter = (StablePos[0] + StablePos[1]) * 0.5f;
-    FVector BackCenter = (StablePos[6] + StablePos[7]) * 0.5f;
-    FVector RightCenter = (StablePos[0] + StablePos[2] + StablePos[5] + StablePos[6]) * 0.25f;
-    FVector LeftCenter = (StablePos[1] + StablePos[3] + StablePos[4] + StablePos[7]) * 0.25f;
+    FTransform ActorTransform = Owner->GetActorTransform();
+    TArray<FVector> LocalPos;
+    for (const FVector& P : StablePos)
+        LocalPos.Add(ActorTransform.InverseTransformPosition(P));
+
+    FVector FrontCenter = (LocalPos[0] + LocalPos[1]) * 0.5f;
+    FVector BackCenter = (LocalPos[6] + LocalPos[7]) * 0.5f;
+    FVector RightCenter = (LocalPos[0] + LocalPos[2] + LocalPos[5] + LocalPos[6]) * 0.25f;
+    FVector LeftCenter = (LocalPos[1] + LocalPos[3] + LocalPos[4] + LocalPos[7]) * 0.25f;
 
     FVector FwdVec = (BackCenter - FrontCenter).GetSafeNormal();
     FVector RightVec = (RightCenter - LeftCenter).GetSafeNormal();
@@ -213,10 +250,13 @@ void USpiderAnimInstance::UpdateBody(float DeltaSeconds)
     FVector FootPlaneNormal = FVector::CrossProduct(RightVec, FwdVec).GetSafeNormal();
     if (FootPlaneNormal.Z < 0.f) FootPlaneNormal = -FootPlaneNormal;
 
-    float TargetBodyPitch = FMath::RadiansToDegrees(
+    float TargetBodyPitch = -FMath::RadiansToDegrees(
         FMath::Atan2(FootPlaneNormal.X, FootPlaneNormal.Z));
     float TargetBodyRoll = -FMath::RadiansToDegrees(
         FMath::Atan2(FootPlaneNormal.Y, FootPlaneNormal.Z));
+
+    TargetBodyPitch = FMath::Clamp(TargetBodyPitch, -15.f, 15.f);
+    TargetBodyRoll = FMath::Clamp(TargetBodyRoll, -15.f, 15.f);
 
     BodyRotationOffset = FMath::RInterpTo(
         BodyRotationOffset,
@@ -228,56 +268,112 @@ void USpiderAnimInstance::DoRaycast(FSpiderLeg& Leg)
 {
     if (!Owner) return;
 
+    USpiderMovementComponent* SpiderMove = Cast<USpiderMovementComponent>(
+        Owner->GetMovementComponent());
+    float Alpha = SpiderMove ? SpiderMove->TransitionAlpha : 0.f;
+
+    if (Alpha > 0.15f && Alpha < 0.85f && !Leg.bIsStepping)
+        return;
+
     FVector Velocity = Owner->GetVelocity();
     float   Speed = Velocity.Size();
-    float   PredScale = FMath::Clamp(Speed / 300.f, 0.f, 1.f);
-    FVector PredOffset = Velocity.GetSafeNormal() * Speed * 0.15f * PredScale;
+    FVector PredOffset = Velocity.GetSafeNormal() *
+        Speed * 0.15f *
+        FMath::Clamp(Speed / 300.f, 0.f, 1.f);
 
     FVector WorldOffset = Owner->GetActorTransform()
         .TransformPosition(Leg.RestOffset) + PredOffset;
 
-    FVector Start = WorldOffset + SurfaceNormal * 300.f;
-    FVector End = WorldOffset - SurfaceNormal * 500.f;
-
     FCollisionQueryParams Params;
     Params.AddIgnoredActor(Owner);
 
-    FHitResult SweepHit;
-    FCollisionShape Sphere = FCollisionShape::MakeSphere(25.f);
-    bool bSweepHit = Owner->GetWorld()->SweepSingleByChannel(
-        SweepHit, Start, End, FQuat::Identity,
-        ECC_WorldStatic, Sphere, Params);
-
     FVector RawDesired;
-    if (bSweepHit)
+    bool    bFoundSurface = false;
+
+    if (Alpha > 0.15f)
     {
-        FVector PreciseStart = SweepHit.ImpactPoint + SurfaceNormal * 50.f;
-        FVector PreciseEnd = SweepHit.ImpactPoint - SurfaceNormal * 80.f;
+        TArray<FVector> CastDirs = {
+            -Owner->GetActorUpVector(),
+            FVector(0, 0, -1.f),
+            SurfaceNormal * -1.f
+        };
 
-        FHitResult PreciseHit;
-        bool bPrecise = Owner->GetWorld()->LineTraceSingleByChannel(
-            PreciseHit, PreciseStart, PreciseEnd, ECC_WorldStatic, Params);
+        float    BestDist = FLT_MAX;
+        FHitResult BestHit;
 
-        RawDesired = bPrecise
-            ? PreciseHit.ImpactPoint + PreciseHit.Normal * Leg.FootGroundOffset
-            : SweepHit.ImpactPoint + SweepHit.Normal * Leg.FootGroundOffset;
+        for (const FVector& Dir : CastDirs)
+        {
+            FHitResult Hit;
+            FVector    S = WorldOffset + (-Dir) * 200.f;
+            FVector    E = WorldOffset + Dir * 400.f;
 
-        Leg.LastSurfaceNormal = bPrecise ? PreciseHit.Normal : SweepHit.Normal;
+            FCollisionShape Sphere = FCollisionShape::MakeSphere(20.f);
+            bool bHit = GetWorld()->SweepSingleByChannel(
+                Hit, S, E, FQuat::Identity, ECC_WorldStatic, Sphere, Params);
+
+            if (bHit && Hit.Distance < BestDist)
+            {
+                BestDist = Hit.Distance;
+                BestHit = Hit;
+                bFoundSurface = true;
+            }
+        }
+
+        if (bFoundSurface)
+        {
+            Leg.LastSurfaceNormal = BestHit.Normal;
+
+            FHitResult PreciseHit;
+            bool bPrecise = GetWorld()->LineTraceSingleByChannel(
+                PreciseHit,
+                BestHit.ImpactPoint + BestHit.Normal * 50.f,
+                BestHit.ImpactPoint - BestHit.Normal * 80.f,
+                ECC_WorldStatic, Params);
+
+            RawDesired = bPrecise
+                ? PreciseHit.ImpactPoint + PreciseHit.Normal * Leg.FootGroundOffset
+                : BestHit.ImpactPoint + BestHit.Normal * Leg.FootGroundOffset;
+        }
     }
     else
     {
+        FVector Start = WorldOffset + SurfaceNormal * 300.f;
+        FVector End = WorldOffset - SurfaceNormal * 500.f;
+
+        FHitResult SweepHit;
+        FCollisionShape Sphere = FCollisionShape::MakeSphere(25.f);
+        bool bSweepHit = GetWorld()->SweepSingleByChannel(
+            SweepHit, Start, End, FQuat::Identity, ECC_WorldStatic, Sphere, Params);
+
+        if (bSweepHit)
+        {
+            FHitResult PreciseHit;
+            bool bPrecise = GetWorld()->LineTraceSingleByChannel(
+                PreciseHit,
+                SweepHit.ImpactPoint + SurfaceNormal * 50.f,
+                SweepHit.ImpactPoint - SurfaceNormal * 80.f,
+                ECC_WorldStatic, Params);
+
+            RawDesired = bPrecise
+                ? PreciseHit.ImpactPoint + PreciseHit.Normal * Leg.FootGroundOffset
+                : SweepHit.ImpactPoint + SweepHit.Normal * Leg.FootGroundOffset;
+
+            Leg.LastSurfaceNormal = bPrecise ? PreciseHit.Normal : SweepHit.Normal;
+            bFoundSurface = true;
+        }
+    }
+
+    if (!bFoundSurface)
+    {
+        if (!Leg.DesiredFootPos.IsNearlyZero())
+            return;
         RawDesired = WorldOffset;
     }
 
-    FVector HipWorld = Owner->GetActorTransform()
-        .TransformPosition(Leg.RestOffset) + SurfaceNormal * 60.f;
-
-    FVector ActorCenter = Owner->GetActorLocation();
-
     FHitResult LOSHit;
-    bool bLOSBlocked = Owner->GetWorld()->LineTraceSingleByChannel(LOSHit, ActorCenter, RawDesired, ECC_WorldStatic, Params);
-
-    if (bLOSBlocked)
+    bool bLOS = GetWorld()->LineTraceSingleByChannel(
+        LOSHit, Owner->GetActorLocation(), RawDesired, ECC_WorldStatic, Params);
+    if (bLOS)
         RawDesired = LOSHit.ImpactPoint + LOSHit.Normal * Leg.FootGroundOffset;
 
     if (Leg.bIsStepping)

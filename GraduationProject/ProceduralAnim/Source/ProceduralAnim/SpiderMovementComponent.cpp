@@ -1,20 +1,14 @@
 #include "SpiderMovementComponent.h"
 #include "GameFramework/Character.h"
-#include "DrawDebugHelpers.h"
-
-float USpiderMovementComponent::GetGravityZ() const
-{
-    float DefaultGravZ = Super::GetGravityZ();
-    return DefaultGravZ;
-}
+#include "Components/CapsuleComponent.h"
 
 void USpiderMovementComponent::TickComponent(float DeltaTime,
     ELevelTick TickType,
     FActorComponentTickFunction* ThisTickFunction)
 {
+    Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
     DetectWall(DeltaTime);
     AlignToSurface(DeltaTime);
-    Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 }
 
 void USpiderMovementComponent::DetectWall(float DeltaTime)
@@ -24,28 +18,69 @@ void USpiderMovementComponent::DetectWall(float DeltaTime)
 
     FVector Forward = Owner->GetActorForwardVector();
     FVector Start = Owner->GetActorLocation();
-    FVector End = Start + Forward * WallDetectDistance;
 
     FHitResult Hit;
     FCollisionQueryParams Params;
     Params.AddIgnoredActor(Owner);
-
     FCollisionShape Sphere = FCollisionShape::MakeSphere(WallDetectRadius);
-    bool bHit = GetWorld()->SweepSingleByChannel(
-        Hit, Start, End, FQuat::Identity,
-        ECC_WorldStatic, Sphere, Params);
 
-    if (bHit)
+    bool bHitFar = GetWorld()->SweepSingleByChannel(
+        Hit, Start, Start + Forward * WallDetectDistance,
+        FQuat::Identity, ECC_WorldStatic, Sphere, Params);
+
+    FHitResult HitClose;
+    bool bHitClose = GetWorld()->SweepSingleByChannel(
+        HitClose, Start, Start + Forward * WallDetectDistance * 0.4f,
+        FQuat::Identity, ECC_WorldStatic, Sphere, Params);
+
+    FHitResult& BestHit = bHitClose ? HitClose : Hit;
+    bool        bAnyHit = bHitClose || bHitFar;
+
+    if (bAnyHit)
     {
-        float Dot = FVector::DotProduct(Hit.Normal, -GravityDir);
-        if (Dot < 0.7f)
+        float Dot = FVector::DotProduct(BestHit.Normal, Owner->GetActorUpVector());
+        if (Dot < 0.85f)
         {
+            WallDetected = true;
+            LastWallNormal = BestHit.Normal;
+
+            float BlendSpeed = bHitClose ? 3.f : 0.5f;
             TargetSurfaceNormal = FMath::VInterpTo(
-                TargetSurfaceNormal, Hit.Normal, DeltaTime, 2.f);
+                TargetSurfaceNormal, BestHit.Normal, DeltaTime, BlendSpeed);
         }
     }
     else
     {
+        WallDetected = false;
+        if (WallCommitAlpha < 0.1f)
+        {
+            TargetSurfaceNormal = FMath::VInterpTo(
+                TargetSurfaceNormal, FVector(0, 0, 1.f), DeltaTime, 2.f);
+        }
+    }
+}
+
+void USpiderMovementComponent::NotifyFootNormals(
+    const FVector& AverageFootNormal, float WallFootFraction)
+{
+    WallCommitAlpha = FMath::FInterpTo(
+        WallCommitAlpha, WallFootFraction,
+        GetWorld()->GetDeltaSeconds(), 2.f);
+
+    if (WallFootFraction > 0.1f)
+    {
+        float BlendSpeed = 1.f + WallCommitAlpha * 3.f;
+        TargetSurfaceNormal = FMath::VInterpTo(
+            TargetSurfaceNormal, AverageFootNormal,
+            GetWorld()->GetDeltaSeconds(), BlendSpeed);
+    }
+    else if (!WallDetected)
+    {
+        WallCommitAlpha = FMath::FInterpTo(
+            WallCommitAlpha, 0.f, GetWorld()->GetDeltaSeconds(), 1.f);
+        TargetSurfaceNormal = FMath::VInterpTo(
+            TargetSurfaceNormal, FVector(0, 0, 1.f),
+            GetWorld()->GetDeltaSeconds(), 1.f);
     }
 }
 
@@ -54,45 +89,86 @@ void USpiderMovementComponent::AlignToSurface(float DeltaTime)
     ACharacter* Owner = Cast<ACharacter>(GetOwner());
     if (!Owner) return;
 
-    FVector TargetGravityDir = -TargetSurfaceNormal;
-    GravityDir = FMath::VInterpTo(
-        GravityDir, TargetGravityDir, DeltaTime, SurfaceAlignSpeed);
-    GravityDir = GravityDir.GetSafeNormal();
+    GravityDir = (-TargetSurfaceNormal).GetSafeNormal();
 
     FVector CurrentUp = Owner->GetActorUpVector();
-    FVector TargetUp = -GravityDir;
+    FVector TargetUp = TargetSurfaceNormal.GetSafeNormal();
 
-    if (!FVector::Coincident(CurrentUp, TargetUp))
+    float AngleBetween = FMath::RadiansToDegrees(
+        FMath::Acos(FMath::Clamp(
+            FVector::DotProduct(CurrentUp, TargetUp), -1.f, 1.f)));
+
+    if (AngleBetween > 0.1f)
     {
-        FQuat AlignDelta = FQuat::FindBetweenNormals(CurrentUp, TargetUp);
-        FQuat CurrentRot = Owner->GetActorQuat();
-        FQuat TargetRot = FQuat::Slerp(
-            CurrentRot, AlignDelta * CurrentRot,
-            FMath::Clamp(DeltaTime * SurfaceAlignSpeed, 0.f, 1.f));
+        FVector RightAxis = Owner->GetActorRightVector();
 
-        Owner->SetActorRotation(TargetRot);
+        FVector CurrProj = (CurrentUp - RightAxis *
+            FVector::DotProduct(CurrentUp, RightAxis)).GetSafeNormal();
+        FVector TargProj = (TargetUp - RightAxis *
+            FVector::DotProduct(TargetUp, RightAxis)).GetSafeNormal();
+
+        float CosA = FMath::Clamp(
+            FVector::DotProduct(CurrProj, TargProj), -1.f, 1.f);
+        float Angle = FMath::Acos(CosA);
+
+        FVector Cross = FVector::CrossProduct(CurrProj, TargProj);
+        if (FVector::DotProduct(Cross, RightAxis) < 0.f)
+            Angle = -Angle;
+
+        float MaxRad = FMath::DegreesToRadians(20.f * DeltaTime);
+        Angle = FMath::Clamp(Angle, -MaxRad, MaxRad);
+
+        FQuat AlignDelta = FQuat(RightAxis, Angle);
+        FQuat NewRot = AlignDelta * Owner->GetActorQuat();
+        MoveUpdatedComponent(FVector::ZeroVector, NewRot, true);
     }
+
+    float UpDot = FVector::DotProduct(Owner->GetActorUpVector(),
+        FVector(0, 0, 1.f));
+    TransitionAlpha = 1.f - FMath::Abs(UpDot);
 }
 
-void USpiderMovementComponent::PhysicsRotation(float DeltaTime)
+void USpiderMovementComponent::FindFloor(
+    const FVector& CapsuleLocation,
+    FFindFloorResult& OutFloorResult,
+    bool bCanUseCachedLocation,
+    const FHitResult* DownwardSweepResult) const
 {
-    if (!HasValidData()) return;
-
-    FRotator CurrentRot = UpdatedComponent->GetComponentRotation();
-
-    if (!Velocity.IsNearlyZero())
+    ACharacter* Owner = Cast<ACharacter>(GetOwner());
+    if (!Owner)
     {
-        FVector LocalVel = CharacterOwner->GetActorTransform()
-            .InverseTransformVector(Velocity);
+        Super::FindFloor(CapsuleLocation, OutFloorResult,
+            bCanUseCachedLocation, DownwardSweepResult);
+        return;
+    }
 
-        if (!FMath::IsNearlyZero(LocalVel.X))
-        {
-            float TargetYawDelta = FMath::RadiansToDegrees(
-                FMath::Atan2(LocalVel.Y, LocalVel.X));
+    FVector ActorDown = -Owner->GetActorUpVector();
 
-            FRotator NewRot = CurrentRot;
-            NewRot.Yaw += TargetYawDelta * DeltaTime * RotationRate.Yaw * 0.01f;
-            MoveUpdatedComponent(FVector::ZeroVector, NewRot, true);
-        }
+    float CapsuleHalfHeight = Owner->GetCapsuleComponent()->GetScaledCapsuleHalfHeight();
+    float CapsuleRadius = Owner->GetCapsuleComponent()->GetScaledCapsuleRadius();
+
+    FVector Start = CapsuleLocation;
+    FVector End = CapsuleLocation + ActorDown * (CapsuleHalfHeight + 20.f);
+
+    FHitResult Hit;
+    FCollisionQueryParams Params;
+    Params.AddIgnoredActor(Owner);
+    FCollisionShape Capsule = FCollisionShape::MakeSphere(CapsuleRadius * 0.8f);
+
+    bool bHit = GetWorld()->SweepSingleByChannel(
+        Hit, Start, End, FQuat::Identity, ECC_WorldStatic, Capsule, Params);
+
+    if (bHit)
+    {
+        OutFloorResult.bWalkableFloor = true;
+        OutFloorResult.bBlockingHit = true;
+        OutFloorResult.HitResult = Hit;
+        OutFloorResult.FloorDist = Hit.Distance;
+        OutFloorResult.LineDist = Hit.Distance;
+    }
+    else
+    {
+        Super::FindFloor(CapsuleLocation, OutFloorResult,
+            bCanUseCachedLocation, DownwardSweepResult);
     }
 }

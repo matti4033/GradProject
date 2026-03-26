@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProceduralAnimModuleRules")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Development")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2b43dd2520d8d8cbd75e68c67e7690ee3a435e94")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+81921be5c1e3abd6366e0cb67d6542f3a0d21181")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProceduralAnimModuleRules")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProceduralAnimModuleRules")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
