@@ -26,6 +26,10 @@ void FAnimNode_SpiderIK::EvaluateSkeletalControl_AnyThread(
     FTransform ComponentTransform =
         Output.AnimInstanceProxy->GetComponentTransform();
 
+    FVector SurfUpCS =
+        ComponentTransform.InverseTransformVectorNoScale(SpiderInstance->SurfaceNormal);
+    SurfUpCS.Normalize();
+
     for (const FSpiderLeg& Leg : LegsToUse)
     {
         FCompactPoseBoneIndex UpperIdx(
@@ -58,12 +62,21 @@ void FAnimNode_SpiderIK::EvaluateSkeletalControl_AnyThread(
         FVector LocalTarget =
             ComponentTransform.InverseTransformPosition(Leg.CurrentFootPos);
 
-        float HeightDiff = FMath::Max(0.f, LocalTarget.Z - UpperPos.Z);
+        //float HeightDiff = FMath::Max(0.f, LocalTarget.Z - UpperPos.Z);
+        float HeightDiff = FMath::Max(
+            0.f,
+            FVector::DotProduct(LocalTarget - UpperPos, SurfUpCS)
+        );
         float UpwardBias = 2.f + HeightDiff * 0.05f;
 
-        FVector UpDir = SpiderInstance->SurfaceNormal;
+        FVector UpDir = SurfUpCS;
 
-        FVector OutwardDir = UpperPos.GetSafeNormal();
+        //FVector OutwardDir = UpperPos.GetSafeNormal();
+        FVector ComponentOrigin = ComponentTransform.GetLocation();
+        FVector OutwardDir = (UpperPos - ComponentOrigin).GetSafeNormal();
+        if (OutwardDir.IsNearlyZero())
+            OutwardDir = SurfUpCS ^ FVector::RightVector;
+
         FVector PoleDir = (OutwardDir + UpDir * UpwardBias).GetSafeNormal();
         FVector BiasedKnee = UpperPos + PoleDir * UpperLen;
         FVector BiasedAnkle = BiasedKnee + ActualMidDir * MidLen;
@@ -72,16 +85,34 @@ void FAnimNode_SpiderIK::EvaluateSkeletalControl_AnyThread(
         TArray<FVector> Chain = { UpperPos, BiasedKnee, BiasedAnkle, BiasedTipEnd };
         FSpiderFABRIK::Solve(Chain, LocalTarget, 20);
 
-        float MinAnkleZ = Chain[3].Z + 40.f;
-        if (Chain[2].Z < MinAnkleZ)
+        //float MinAnkleZ = Chain[3].Z + 40.f;
+        //if (Chain[2].Z < MinAnkleZ)
+
+        FVector SurfUp = SpiderInstance->SurfaceNormal;
+        float AnkleAlongNormal = FVector::DotProduct(Chain[2], SurfUp);
+        float TipAlongNormal = FVector::DotProduct(Chain[3], SurfUp);
+
+        if (AnkleAlongNormal < TipAlongNormal + 40.f)
         {
-            Chain[2].Z = MinAnkleZ;
+            float Correction = (TipAlongNormal + 40.f) - AnkleAlongNormal;
+            Chain[2] += SurfUpCS * Correction;
+
             FVector AnkleToRoot = (Chain[0] - Chain[2]).GetSafeNormal();
             Chain[1] = Chain[2] + AnkleToRoot * MidLen;
             FVector RootToKnee = Chain[1] - Chain[0];
             if (RootToKnee.Size() > UpperLen)
                 Chain[1] = Chain[0] + RootToKnee.GetSafeNormal() * UpperLen;
         }
+        //float MinAnkleZ = Chain[3].Z + 40.f;
+        //if (Chain[2].Z < MinAnkleZ)
+        //{
+        //    Chain[2].Z = MinAnkleZ;
+        //    FVector AnkleToRoot = (Chain[0] - Chain[2]).GetSafeNormal();
+        //    Chain[1] = Chain[2] + AnkleToRoot * MidLen;
+        //    FVector RootToKnee = Chain[1] - Chain[0];
+        //    if (RootToKnee.Size() > UpperLen)
+        //        Chain[1] = Chain[0] + RootToKnee.GetSafeNormal() * UpperLen;
+        //}
 
         FVector UpperDir = (Chain[1] - Chain[0]).GetSafeNormal();
 

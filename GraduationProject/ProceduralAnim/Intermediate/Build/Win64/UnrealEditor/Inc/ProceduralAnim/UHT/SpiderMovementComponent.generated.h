@@ -24,8 +24,6 @@ public: \
 
 
 #define FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderMovementComponent_h_10_ENHANCED_CONSTRUCTORS \
-	/** Standard constructor, called after all reflected properties have been initialized */ \
-	NO_API USpiderMovementComponent(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	USpiderMovementComponent(USpiderMovementComponent&&); \
@@ -33,11 +31,11 @@ private: \
 public: \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, USpiderMovementComponent); \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(USpiderMovementComponent); \
-	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(USpiderMovementComponent) \
+	DEFINE_DEFAULT_CONSTRUCTOR_CALL(USpiderMovementComponent) \
 	NO_API virtual ~USpiderMovementComponent();
 
 
-#define FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderMovementComponent_h_6_PROLOG
+#define FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderMovementComponent_h_7_PROLOG
 #define FID_Skola_GradProject_GraduationProject_ProceduralAnim_Source_ProceduralAnim_SpiderMovementComponent_h_10_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \

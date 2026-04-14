@@ -9,4 +9,7 @@ class PROCEDURALANIM_API ASpiderCharacter : public ACharacter
     GENERATED_BODY()
 public:
     ASpiderCharacter(const FObjectInitializer& ObjectInitializer);
+
+    UPROPERTY(BlueprintReadWrite)
+    FVector2D MovementInput;
 };

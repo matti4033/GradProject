@@ -1,50 +1,32 @@
 #pragma once
+
 #include "CoreMinimal.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "SpiderMovementComponent.generated.h"
 
 UCLASS()
-class PROCEDURALANIM_API USpiderMovementComponent
-    : public UCharacterMovementComponent
+class PROCEDURALANIM_API USpiderMovementComponent : public UCharacterMovementComponent
 {
     GENERATED_BODY()
-
 public:
-    UPROPERTY(EditAnywhere, Category = "Spider")
-    float SurfaceAlignSpeed = 2.f;
+    USpiderMovementComponent();
 
-    UPROPERTY(EditAnywhere, Category = "Spider")
-    float WallDetectDistance = 120.f;
-
-    UPROPERTY(EditAnywhere, Category = "Spider")
-    float WallDetectRadius = 20.f;
-
-    UPROPERTY(BlueprintReadOnly, Category = "Spider")
-    FVector GravityDir = FVector(0, 0, -1.f);
-
-    UPROPERTY(BlueprintReadOnly, Category = "Spider")
-    float TransitionAlpha = 0.f;
-
-    UPROPERTY(BlueprintReadOnly, Category = "Spider")
-    bool WallDetected = false;
-
-    FVector TargetSurfaceNormal = FVector(0, 0, 1.f);
-    FVector LastWallNormal = FVector::ZeroVector;
-
-    void NotifyFootNormals(const FVector& AverageFootNormal,
-        float WallFootFraction);
-
-    virtual void TickComponent(float DeltaTime, ELevelTick TickType,
+    virtual void TickComponent(
+        float DeltaTime,
+        ELevelTick TickType,
         FActorComponentTickFunction* ThisTickFunction) override;
 
-    virtual void FindFloor(const FVector& CapsuleLocation,
-        FFindFloorResult& OutFloorResult,
-        bool bCanUseCachedLocation,
-        const FHitResult* DownwardSweepResult) const override;
+    virtual void PhysCustom(float DeltaTime, int32 Iterations) override;
+    virtual void PhysCustom_Custom(float DeltaTime, int32 Iterations);
 
-private:
-    float WallCommitAlpha = 0.f;
+    bool SpiderFindFloor(const FVector& Location, FFindFloorResult& OutFloor);
+    bool SpiderTryStepUp(const FHitResult& Hit, const FVector& Delta);
 
-    void DetectWall(float DeltaTime);
-    void AlignToSurface(float DeltaTime);
+    void NotifyFootNormals(const FVector& AvgNormal, float SupportFraction);
+
+    FVector TargetSurfaceNormal = FVector::UpVector;
+
+    float TransitionAlpha = 0.f;
+
+    float MaxSpiderSpeed = 800.f;
 };
