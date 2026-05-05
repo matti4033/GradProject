@@ -3,7 +3,6 @@
 #include "Components/CapsuleComponent.h"
 #include "SpiderCharacter.h"
 #include "GameFramework/SpringArmComponent.h"
-#include "Components/CapsuleComponent.h"
 
 USpiderMovementComponent::USpiderMovementComponent()
 {
@@ -31,23 +30,55 @@ void USpiderMovementComponent::TickComponent(
             Up = FVector::UpVector;
 
         FRotator ControlRot = Owner->Controller->GetControlRotation();
-        FVector DesiredForward = ControlRot.Vector();
 
-        FVector Forward = FVector::VectorPlaneProject(DesiredForward, Up).GetSafeNormal();
-        if (Forward.IsNearlyZero())
-            Forward = FVector::CrossProduct(Up, FVector::RightVector).GetSafeNormal();
+        float SurfDotUp = FVector::DotProduct(Up, FVector::UpVector);
+        if (SurfDotUp > 0.7f)
+        {
+            FVector WorldFwd = FRotator(0, Owner->Controller->GetControlRotation().Yaw, 0).Vector();
+            FVector Projected = FVector::VectorPlaneProject(WorldFwd, Up).GetSafeNormal();
+            if (!Projected.IsNearlyZero())
+                CurrentSurfaceForward = Projected;
+        }
 
-        FVector Right = FVector::CrossProduct(Up, Forward).GetSafeNormal();
+        float CurrentYaw = ControlRot.Yaw;
+        float YawDelta = FMath::FindDeltaAngleDegrees(LastControllerYaw, CurrentYaw);
+        LastControllerYaw = CurrentYaw;
+
+        FQuat YawQ(Up, FMath::DegreesToRadians(YawDelta));
+        CurrentSurfaceForward = YawQ.RotateVector(CurrentSurfaceForward);
+        CurrentSurfaceForward = FVector::VectorPlaneProject(
+            CurrentSurfaceForward, Up).GetSafeNormal();
+
+        if (CurrentSurfaceForward.IsNearlyZero())
+            CurrentSurfaceForward = FVector::CrossProduct(Up, FVector::RightVector).GetSafeNormal();
+
+        FVector Right = FVector::CrossProduct(Up, CurrentSurfaceForward).GetSafeNormal();
 
         const FMatrix Basis(
-            Forward,
+            CurrentSurfaceForward,
             Right,
             Up,
             FVector::ZeroVector);
 
-        FRotator TargetRot = Basis.Rotator();
+        Owner->SetActorRotation(Basis.Rotator());
+        //FRotator ControlRot = Owner->Controller->GetControlRotation();
+        //FVector DesiredForward = ControlRot.Vector();
 
-        Owner->SetActorRotation(TargetRot);
+        //FVector Forward = FVector::VectorPlaneProject(DesiredForward, Up).GetSafeNormal();
+        //if (Forward.IsNearlyZero())
+        //    Forward = FVector::CrossProduct(Up, FVector::RightVector).GetSafeNormal();
+
+        //FVector Right = FVector::CrossProduct(Up, Forward).GetSafeNormal();
+
+        //const FMatrix Basis(
+        //    Forward,
+        //    Right,
+        //    Up,
+        //    FVector::ZeroVector);
+
+        //FRotator TargetRot = Basis.Rotator();
+
+        //Owner->SetActorRotation(TargetRot);
     }
 
     Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
@@ -87,14 +118,6 @@ void USpiderMovementComponent::NotifyFootNormals(
     }
 
     TargetSurfaceNormal = Final;
-
-     if (GEngine)
-     {
-         GEngine->AddOnScreenDebugMessage(
-             1234, 0.f, FColor::Green,
-             FString::Printf(TEXT("FootNormals: %s  Support=%.2f"),
-                 *AvgNormal.ToString(), SupportFraction));
-     }
 }
 
 void USpiderMovementComponent::PhysCustom(float DeltaTime, int32 Iterations)
@@ -156,6 +179,56 @@ void USpiderMovementComponent::PhysCustom_Custom(float DeltaTime, int32 Iteratio
 
     FVector SurfaceRight = FVector::CrossProduct(Up, SurfaceForward).GetSafeNormal();
 
+    //new
+    FVector SurfaceDown = -TargetSurfaceNormal.GetSafeNormal();
+
+    FHitResult GroundHit;
+    FVector GroundStart = Spider->GetActorLocation();
+    FVector GroundEnd = GroundStart + SurfaceDown * 300.f;
+
+    FCollisionQueryParams GroundParams;
+    GroundParams.AddIgnoredActor(Spider);
+
+    bool bGroundFound = GetWorld()->LineTraceSingleByChannel(
+        GroundHit, GroundStart, GroundEnd, ECC_WorldStatic, GroundParams);
+
+    float CapsuleHalf = Spider->GetCapsuleComponent()->GetScaledCapsuleHalfHeight();
+
+    float CurrentNormalVel = FVector::DotProduct(Velocity, SurfaceDown);
+
+    if (bGroundFound)
+    {
+        float DistError = GroundHit.Distance - (CapsuleHalf + 10.f);
+
+        if (DistError > 2.f)
+        {
+            float TargetNormalVel = FMath::Clamp(DistError * 4.f, 0.f, 250.f);
+            float NewNormalVel = FMath::FInterpTo(
+                CurrentNormalVel, TargetNormalVel, DeltaTime, 8.f);
+            Velocity += SurfaceDown * (NewNormalVel - CurrentNormalVel);
+        }
+        else if (DistError < -2.f)
+        {
+            float TargetNormalVel = FMath::Clamp(DistError * 4.f, -250.f, 0.f);
+            float NewNormalVel = FMath::FInterpTo(
+                CurrentNormalVel, TargetNormalVel, DeltaTime, 8.f);
+            Velocity += SurfaceDown * (NewNormalVel - CurrentNormalVel);
+        }
+        else
+        {
+            Velocity -= SurfaceDown * CurrentNormalVel;
+        }
+    }
+    else
+    {
+        float TargetNormalVel = FMath::Min(CurrentNormalVel + 200.f * DeltaTime, 400.f);
+        Velocity += SurfaceDown * (TargetNormalVel - CurrentNormalVel);
+    }
+
+    if (!bGroundFound)
+        Velocity += SurfaceDown * 200.f * DeltaTime;
+    //end new
+
     FVector2D Input = Spider->MovementInput;
 
     FVector MoveDir =
@@ -171,7 +244,15 @@ void USpiderMovementComponent::PhysCustom_Custom(float DeltaTime, int32 Iteratio
         MoveDir.Normalize();
     }
 
-    Velocity = FMath::VInterpTo(Velocity, MoveDir * MaxSpiderSpeed, DeltaTime, 6.f);
+    //Velocity = FMath::VInterpTo(Velocity, MoveDir * MaxSpiderSpeed, DeltaTime, 6.f);
+    FVector SurfNormal = TargetSurfaceNormal.GetSafeNormal();
+    FVector NormalVelocity = SurfNormal * FVector::DotProduct(Velocity, SurfNormal);
+    FVector LateralVelocity = Velocity - NormalVelocity;
+
+    LateralVelocity = FMath::VInterpTo(
+        LateralVelocity, MoveDir * MaxSpiderSpeed, DeltaTime, 6.f);
+
+    Velocity = LateralVelocity + NormalVelocity;
 
     FVector Delta = Velocity * DeltaTime;
     FVector Remaining = Delta;
@@ -189,14 +270,6 @@ void USpiderMovementComponent::PhysCustom_Custom(float DeltaTime, int32 Iteratio
 
         Remaining = ComputeSlideVector(Remaining, 1.f - Hit.Time, Hit.Normal, Hit);
     }
-
-     if (GEngine)
-     {
-         GEngine->AddOnScreenDebugMessage(1, 0.f, FColor::Red,
-             FString::Printf(TEXT("MoveDir: %s"), *MoveDir.ToString()));
-         GEngine->AddOnScreenDebugMessage(2, 0.f, FColor::Yellow,
-             FString::Printf(TEXT("Velocity: %s"), *Velocity.ToString()));
-     }
  }
 
 bool USpiderMovementComponent::SpiderFindFloor(const FVector& Location, FFindFloorResult& OutFloor)

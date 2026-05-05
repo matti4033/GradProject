@@ -28,5 +28,9 @@ public:
 
     float TransitionAlpha = 0.f;
 
-    float MaxSpiderSpeed = 800.f;
+    float MaxSpiderSpeed = 400.f;
+
+private:
+    float LastControllerYaw = 0.f;
+    FVector CurrentSurfaceForward = FVector::ForwardVector;
 };

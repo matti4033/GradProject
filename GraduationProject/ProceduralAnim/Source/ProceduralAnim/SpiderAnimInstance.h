@@ -63,8 +63,18 @@ public:
     float    SpiderBodyLength = 80.f;
     UPROPERTY(EditAnywhere)
     float    SpiderBodyWidth = 60.f;
+    FVector PrevSurfaceNormal = FVector::UpVector;
+
+    UPROPERTY(EditAnywhere, Category = "Tuning")
+    float FootSampleRingRadius = 20.f;
+
+    UPROPERTY(EditAnywhere, Category = "Tuning")
+    int32 FootSampleCount = 8;
+
 
     void UpdateBody(float DeltaSeconds);
+    float CurrentSway = 0.f;
+
 
 private:
     void UpdateLegs(float DeltaSeconds);

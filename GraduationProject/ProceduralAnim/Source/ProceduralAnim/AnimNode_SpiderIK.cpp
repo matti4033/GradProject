@@ -62,7 +62,6 @@ void FAnimNode_SpiderIK::EvaluateSkeletalControl_AnyThread(
         FVector LocalTarget =
             ComponentTransform.InverseTransformPosition(Leg.CurrentFootPos);
 
-        //float HeightDiff = FMath::Max(0.f, LocalTarget.Z - UpperPos.Z);
         float HeightDiff = FMath::Max(
             0.f,
             FVector::DotProduct(LocalTarget - UpperPos, SurfUpCS)
@@ -71,9 +70,9 @@ void FAnimNode_SpiderIK::EvaluateSkeletalControl_AnyThread(
 
         FVector UpDir = SurfUpCS;
 
-        //FVector OutwardDir = UpperPos.GetSafeNormal();
         FVector ComponentOrigin = ComponentTransform.GetLocation();
-        FVector OutwardDir = (UpperPos - ComponentOrigin).GetSafeNormal();
+        //FVector OutwardDir = (UpperPos - ComponentOrigin).GetSafeNormal();
+        FVector OutwardDir = UpperPos.GetSafeNormal();
         if (OutwardDir.IsNearlyZero())
             OutwardDir = SurfUpCS ^ FVector::RightVector;
 
@@ -85,12 +84,10 @@ void FAnimNode_SpiderIK::EvaluateSkeletalControl_AnyThread(
         TArray<FVector> Chain = { UpperPos, BiasedKnee, BiasedAnkle, BiasedTipEnd };
         FSpiderFABRIK::Solve(Chain, LocalTarget, 20);
 
-        //float MinAnkleZ = Chain[3].Z + 40.f;
-        //if (Chain[2].Z < MinAnkleZ)
-
+        //Change one, SurfUp > SurfUpCS
         FVector SurfUp = SpiderInstance->SurfaceNormal;
-        float AnkleAlongNormal = FVector::DotProduct(Chain[2], SurfUp);
-        float TipAlongNormal = FVector::DotProduct(Chain[3], SurfUp);
+        float AnkleAlongNormal = FVector::DotProduct(Chain[2], SurfUpCS);
+        float TipAlongNormal = FVector::DotProduct(Chain[3], SurfUpCS);
 
         if (AnkleAlongNormal < TipAlongNormal + 40.f)
         {
@@ -103,16 +100,6 @@ void FAnimNode_SpiderIK::EvaluateSkeletalControl_AnyThread(
             if (RootToKnee.Size() > UpperLen)
                 Chain[1] = Chain[0] + RootToKnee.GetSafeNormal() * UpperLen;
         }
-        //float MinAnkleZ = Chain[3].Z + 40.f;
-        //if (Chain[2].Z < MinAnkleZ)
-        //{
-        //    Chain[2].Z = MinAnkleZ;
-        //    FVector AnkleToRoot = (Chain[0] - Chain[2]).GetSafeNormal();
-        //    Chain[1] = Chain[2] + AnkleToRoot * MidLen;
-        //    FVector RootToKnee = Chain[1] - Chain[0];
-        //    if (RootToKnee.Size() > UpperLen)
-        //        Chain[1] = Chain[0] + RootToKnee.GetSafeNormal() * UpperLen;
-        //}
 
         FVector UpperDir = (Chain[1] - Chain[0]).GetSafeNormal();
 
