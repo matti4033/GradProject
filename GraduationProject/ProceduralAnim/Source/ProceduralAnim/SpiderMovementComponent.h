@@ -25,10 +25,21 @@ public:
     void NotifyFootNormals(const FVector& AvgNormal, float SupportFraction);
 
     FVector TargetSurfaceNormal = FVector::UpVector;
+    bool bLedgeTransition = false;
 
     float TransitionAlpha = 0.f;
 
     float MaxSpiderSpeed = 400.f;
+
+    UPROPERTY(EditAnywhere, Category = "Spider")
+    float WallDetectDistance = 150.f;
+
+    UPROPERTY(EditAnywhere, Category = "Spider")
+    float WallDetectRadius = 20.f;
+
+    UPROPERTY(BlueprintReadOnly, Category = "Spider")
+    bool WallDetected = false;
+    FVector LastWallNormal = FVector::ZeroVector;
 
 private:
     float LastControllerYaw = 0.f;

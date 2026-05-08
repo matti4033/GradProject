@@ -17,7 +17,7 @@ void EmptyLinkFunctionForGeneratedCodeProceduralAnim_init() {}
 				nullptr,
 				0,
 				PKG_CompiledIn | 0x00000000,
-				0x5578608E,
+				0x28860E51,
 				0x1BF4671B,
 				METADATA_PARAMS(0, nullptr)
 			};
@@ -25,5 +25,5 @@ void EmptyLinkFunctionForGeneratedCodeProceduralAnim_init() {}
 		}
 		return Z_Registration_Info_UPackage__Script_ProceduralAnim.OuterSingleton;
 	}
-	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_ProceduralAnim(Z_Construct_UPackage__Script_ProceduralAnim, TEXT("/Script/ProceduralAnim"), Z_Registration_Info_UPackage__Script_ProceduralAnim, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x5578608E, 0x1BF4671B));
+	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_ProceduralAnim(Z_Construct_UPackage__Script_ProceduralAnim, TEXT("/Script/ProceduralAnim"), Z_Registration_Info_UPackage__Script_ProceduralAnim, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x28860E51, 0x1BF4671B));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

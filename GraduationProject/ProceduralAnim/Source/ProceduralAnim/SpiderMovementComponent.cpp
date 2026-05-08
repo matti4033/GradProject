@@ -61,26 +61,62 @@ void USpiderMovementComponent::TickComponent(
             FVector::ZeroVector);
 
         Owner->SetActorRotation(Basis.Rotator());
-        //FRotator ControlRot = Owner->Controller->GetControlRotation();
-        //FVector DesiredForward = ControlRot.Vector();
-
-        //FVector Forward = FVector::VectorPlaneProject(DesiredForward, Up).GetSafeNormal();
-        //if (Forward.IsNearlyZero())
-        //    Forward = FVector::CrossProduct(Up, FVector::RightVector).GetSafeNormal();
-
-        //FVector Right = FVector::CrossProduct(Up, Forward).GetSafeNormal();
-
-        //const FMatrix Basis(
-        //    Forward,
-        //    Right,
-        //    Up,
-        //    FVector::ZeroVector);
-
-        //FRotator TargetRot = Basis.Rotator();
-
-        //Owner->SetActorRotation(TargetRot);
     }
 
+    if (Owner)
+    {
+        FVector ActorFwd = Owner->GetActorForwardVector();
+        FVector ActorUp = Owner->GetActorUpVector();
+        FVector ActorLoc = Owner->GetActorLocation();
+
+        FCollisionQueryParams LedgeParams;
+        LedgeParams.AddIgnoredActor(Owner);
+        FCollisionShape LedgeSphere = FCollisionShape::MakeSphere(WallDetectRadius);
+
+        FVector LedgeStart = ActorLoc
+            + ActorFwd * 60.f
+            - ActorUp * 40.f;
+
+        FVector LedgeEnd = LedgeStart
+            + ActorFwd * 80.f
+            - ActorUp * WallDetectDistance;
+
+        FHitResult LedgeHit;
+        bool bLedgeFound = GetWorld()->SweepSingleByChannel(
+            LedgeHit, LedgeStart, LedgeEnd,
+            FQuat::Identity, ECC_WorldStatic, LedgeSphere, LedgeParams);
+
+        if (bLedgeFound)
+        {
+            float Dot = FVector::DotProduct(LedgeHit.Normal, ActorUp);
+            if (Dot < 0.5f)
+            {
+                WallDetected = true;
+                LastWallNormal = LedgeHit.Normal;
+                bLedgeTransition = true;
+            }
+            else
+            {
+                WallDetected = false;
+                bLedgeTransition = false;
+            }
+        }
+        else
+        {
+            WallDetected = false;
+            bLedgeTransition = false;
+
+            float ActorUpDot = FVector::DotProduct(ActorUp, FVector::UpVector);
+            if (ActorUpDot > 0.85f)
+            {
+                TargetSurfaceNormal = FMath::VInterpTo(
+                    TargetSurfaceNormal, FVector::UpVector, DeltaTime, 3.f);
+            }
+        }
+
+        float UpDot = FVector::DotProduct(ActorUp, FVector::UpVector);
+        TransitionAlpha = 1.f - FMath::Abs(UpDot);
+    }
     Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 }
 
@@ -89,7 +125,8 @@ void USpiderMovementComponent::NotifyFootNormals(
     const FVector& AvgNormal,
     float SupportFraction)
 {
-    if (SupportFraction < 0.4f)
+    float MinFraction = bLedgeTransition ? 0.1f : 0.4f;
+    if (SupportFraction < MinFraction)
         return;
 
     FVector Desired = AvgNormal.GetSafeNormal();
@@ -100,6 +137,12 @@ void USpiderMovementComponent::NotifyFootNormals(
         float HemDot = FVector::DotProduct(Old, Desired);
         if (HemDot < 0.f)
             Desired = -Desired;
+    }
+
+    if (bLedgeTransition)
+    {
+        TargetSurfaceNormal = Desired;
+        return;
     }
 
     float DeltaTime = GetWorld()->GetDeltaSeconds();
@@ -118,6 +161,36 @@ void USpiderMovementComponent::NotifyFootNormals(
     }
 
     TargetSurfaceNormal = Final;
+    //float MinFraction = bLedgeTransition ? 0.1f : 0.4f;
+    //if (SupportFraction < MinFraction)
+    //    return;
+
+    //FVector Desired = AvgNormal.GetSafeNormal();
+    //FVector Old = TargetSurfaceNormal.GetSafeNormal();
+
+    //if (!Old.IsNearlyZero())
+    //{
+    //    float HemDot = FVector::DotProduct(Old, Desired);
+    //    if (HemDot < 0.f)
+    //        Desired = -Desired;
+    //}
+
+    //float DeltaTime = GetWorld()->GetDeltaSeconds();
+    //float MaxAnglePerSec = 180.f;
+    //float MaxAngleThisFrame = MaxAnglePerSec * DeltaTime;
+
+    //float Dot = FMath::Clamp(FVector::DotProduct(Old, Desired), -1.f, 1.f);
+    //float Angle = FMath::RadiansToDegrees(FMath::Acos(Dot));
+
+    //FVector Final = Desired;
+
+    //if (Angle > MaxAngleThisFrame && Angle > KINDA_SMALL_NUMBER)
+    //{
+    //    float T = MaxAngleThisFrame / Angle;
+    //    Final = FMath::Lerp(Old, Desired, T).GetSafeNormal();
+    //}
+
+    //TargetSurfaceNormal = Final;
 }
 
 void USpiderMovementComponent::PhysCustom(float DeltaTime, int32 Iterations)
