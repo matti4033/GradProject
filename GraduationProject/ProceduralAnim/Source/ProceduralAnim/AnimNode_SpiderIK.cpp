@@ -25,7 +25,7 @@ void FAnimNode_SpiderIK::EvaluateSkeletalControl_AnyThread(
 
     FTransform ComponentTransform =
         Output.AnimInstanceProxy->GetComponentTransform();
-
+    //convert to component space for IK stuff
     FVector SurfUpCS =
         ComponentTransform.InverseTransformVectorNoScale(SpiderInstance->SurfaceNormal);
     SurfUpCS.Normalize();
@@ -62,6 +62,7 @@ void FAnimNode_SpiderIK::EvaluateSkeletalControl_AnyThread(
         FVector LocalTarget =
             ComponentTransform.InverseTransformPosition(Leg.CurrentFootPos);
 
+        //bias knee outward and up
         float HeightDiff = FMath::Max(
             0.f,
             FVector::DotProduct(LocalTarget - UpperPos, SurfUpCS)
@@ -76,15 +77,17 @@ void FAnimNode_SpiderIK::EvaluateSkeletalControl_AnyThread(
         if (OutwardDir.IsNearlyZero())
             OutwardDir = SurfUpCS ^ FVector::RightVector;
 
+        //biased chain before FABRIK
         FVector PoleDir = (OutwardDir + UpDir * UpwardBias).GetSafeNormal();
         FVector BiasedKnee = UpperPos + PoleDir * UpperLen;
         FVector BiasedAnkle = BiasedKnee + ActualMidDir * MidLen;
         FVector BiasedTipEnd = BiasedAnkle + ActualMidDir * MidLen;
 
+        //run FABRIK to reach target
         TArray<FVector> Chain = { UpperPos, BiasedKnee, BiasedAnkle, BiasedTipEnd };
         FSpiderFABRIK::Solve(Chain, LocalTarget, 20);
 
-        //Change one, SurfUp > SurfUpCS
+        //ankle above tip
         FVector SurfUp = SpiderInstance->SurfaceNormal;
         float AnkleAlongNormal = FVector::DotProduct(Chain[2], SurfUpCS);
         float TipAlongNormal = FVector::DotProduct(Chain[3], SurfUpCS);
@@ -167,6 +170,6 @@ void FAnimNode_SpiderIK::EvaluateSkeletalControl_AnyThread(
         OutBoneTransforms.Add(FBoneTransform(MidIdx, NewMidCS));
         OutBoneTransforms.Add(FBoneTransform(TipIdx, NewTipCS));
     }
-
+    //sort, required by system
     OutBoneTransforms.Sort(FCompareBoneTransformIndex());
 }

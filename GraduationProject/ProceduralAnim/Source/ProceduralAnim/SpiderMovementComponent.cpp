@@ -25,6 +25,7 @@ void USpiderMovementComponent::TickComponent(
     ACharacter* Owner = CharacterOwner;
     if (Owner && Owner->Controller)
     {
+        //surfacenormal is new up!
         FVector Up = TargetSurfaceNormal.GetSafeNormal();
         if (Up.IsNearlyZero())
             Up = FVector::UpVector;
@@ -73,6 +74,7 @@ void USpiderMovementComponent::TickComponent(
         LedgeParams.AddIgnoredActor(Owner);
         FCollisionShape LedgeSphere = FCollisionShape::MakeSphere(WallDetectRadius);
 
+        //attempt at making ledge-walking work, not fully functional
         FVector LedgeStart = ActorLoc
             + ActorFwd * 60.f
             - ActorUp * 40.f;
@@ -222,6 +224,7 @@ void USpiderMovementComponent::PhysCustom_Custom(float DeltaTime, int32 Iteratio
         bOnGround = (DotUp > 0.7f);
     }
 
+    //override ground if surfacenormal is wall
     FVector SurfUp = TargetSurfaceNormal.GetSafeNormal();
     float SurfDotWorldUp = FVector::DotProduct(SurfUp, FVector::UpVector);
     bool bClearlyOnWall = (FMath::Abs(SurfDotWorldUp) < 0.5f);
@@ -230,7 +233,7 @@ void USpiderMovementComponent::PhysCustom_Custom(float DeltaTime, int32 Iteratio
     {
         bOnGround = false;
     }
-
+    //choose what is "up"
     FVector Up = bOnGround ? FloorNormal.GetSafeNormal()
         : SurfUp;
 

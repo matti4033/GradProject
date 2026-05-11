@@ -28,6 +28,7 @@ FRotator ASpiderCharacter::GetViewRotation() const
     USpiderMovementComponent* SpiderMove =
         Cast<USpiderMovementComponent>(GetMovementComponent());
 
+    //use Surfacenormal as up
     FVector SurfUp = SpiderMove
         ? SpiderMove->TargetSurfaceNormal.GetSafeNormal()
         : FVector::UpVector;

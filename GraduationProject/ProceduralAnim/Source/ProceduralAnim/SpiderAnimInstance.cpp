@@ -95,7 +95,7 @@ void USpiderAnimInstance::UpdateLegs(float DeltaSeconds)
             if (Leg.UpperBone == FName("LegMR_Upper")) MRPos = Leg.CurrentFootPos;
             if (Leg.UpperBone == FName("LegML_Upper")) MLPos = Leg.CurrentFootPos;
         }
-
+        //keep legs in their "place"
         for (FSpiderLeg& Leg : Legs)
         {
             if (Leg.UpperBone == FName("LegMR_Upper") && !FRPos.IsNearlyZero())
@@ -231,6 +231,7 @@ void USpiderAnimInstance::UpdateLegs(float DeltaSeconds)
 
 void USpiderAnimInstance::UpdateBody(float DeltaSeconds)
 {
+    //not fully implemented
     if (!Owner || Legs.Num() < 8) return;
 
     USpiderMovementComponent* SpiderMove =
